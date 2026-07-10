@@ -65,7 +65,7 @@ export function AppointmentForm({ defaultService = "" }: { defaultService?: stri
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
           <label htmlFor="phone" style={{ fontSize: 'var(--text-sm)', fontWeight: 500 }}>Phone Number *</label>
-          <Input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" required />
+          <Input type="tel" id="phone" name="phone" placeholder="+91 98400 67900" required />
         </div>
       </div>
       

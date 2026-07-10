@@ -56,7 +56,7 @@ export function Footer() {
               </li>
               <li className={styles.listItem}>
                 <Phone size={16} className={styles.icon} />
-                <a href="tel:+910000000000" className={styles.link}>+91 00000 00000</a>
+                <a href="tel:+919840067900" className={styles.link}>+91 98400 67900</a>
               </li>
               <li className={styles.listItem}>
                 <Mail size={16} className={styles.icon} />

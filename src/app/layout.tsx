@@ -49,7 +49,7 @@ const jsonLd = {
   image: 'https://www.rajscans.com/og-image.jpg',
   '@id': 'https://www.rajscans.com',
   url: 'https://www.rajscans.com',
-  telephone: '+910000000000',
+  telephone: '+919840067900',
   priceRange: '₹₹',
   openingHoursSpecification: [
     {

@@ -2,7 +2,7 @@ import { MessageCircle } from 'lucide-react';
 import styles from './FloatingWhatsApp.module.css';
 
 export function FloatingWhatsApp() {
-  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '910000000000';
+  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919840067900';
   const WHATSAPP_MESSAGE = encodeURIComponent("Hello Raj Scans, I would like to enquire about a scan.");
 
   return (
