@@ -1,95 +1,67 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Container } from '@/components/layout/Container';
+import { Section } from '@/components/layout/Section';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
-export default function Home() {
+import { Hero } from '@/components/home/Hero';
+import { TrustHighlights } from '@/components/home/TrustHighlights';
+import { AboutIntro } from '@/components/home/AboutIntro';
+import { ServicesPreview } from '@/components/home/ServicesPreview';
+import { PackagesPreview } from '@/components/home/PackagesPreview';
+import { Technology } from '@/components/home/Technology';
+import { WhyChooseUs } from '@/components/home/WhyChooseUs';
+import { Testimonials } from '@/components/home/Testimonials';
+import { ContactCTA } from '@/components/home/ContactCTA';
+
+export const metadata = {
+  title: 'Raj Scans | Premium Diagnostic Center',
+  description: 'Experience state-of-the-art diagnostic imaging with unparalleled precision. MRI, CT Scans, Ultrasound, and full health packages.',
+};
+
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Hero />
+      <TrustHighlights />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Section id="about">
+        <Container>
+          <AboutIntro />
+        </Container>
+      </Section>
+
+      <Section id="services" alternate>
+        <Container>
+          <ServicesPreview />
+        </Container>
+      </Section>
+
+      <Section id="packages">
+        <Container>
+          <PackagesPreview />
+        </Container>
+      </Section>
+
+      <Section id="technology" alternate>
+        <Container>
+          <Technology />
+        </Container>
+      </Section>
+
+      <Section id="why-choose-us">
+        <Container>
+          <WhyChooseUs />
+        </Container>
+      </Section>
+
+      <Section id="testimonials" alternate>
+        <Container>
+          <Testimonials />
+        </Container>
+      </Section>
+
+      <ContactCTA />
+      
+      <ScrollToTop />
+    </>
   );
 }

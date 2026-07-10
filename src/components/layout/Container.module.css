@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-gutter-mobile);
+  padding-right: var(--grid-gutter-mobile);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--grid-gutter-tablet);
+    padding-right: var(--grid-gutter-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--grid-gutter-desktop);
+    padding-right: var(--grid-gutter-desktop);
+  }
+}

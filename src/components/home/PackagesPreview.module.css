@@ -1,0 +1,54 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-24);
+  margin-top: var(--space-48);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-top: 4px solid var(--color-accent-gold);
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-brand-navy);
+  margin-top: var(--space-8);
+}
+
+.testList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin: var(--space-24) 0;
+}
+
+.testItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.check {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-32);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

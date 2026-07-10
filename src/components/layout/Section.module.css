@@ -1,0 +1,15 @@
+.section {
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-64);
+}
+
+.section.alternate {
+  background-color: var(--color-surface-card);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--space-96);
+    padding-bottom: var(--space-96);
+  }
+}
