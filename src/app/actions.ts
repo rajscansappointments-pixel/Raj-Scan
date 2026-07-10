@@ -1,3 +1,5 @@
+"use server";
+
 import nodemailer from 'nodemailer';
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'contact@rajscans.com';
