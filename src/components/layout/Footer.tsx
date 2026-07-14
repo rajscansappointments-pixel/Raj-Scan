@@ -49,21 +49,26 @@ export function Footer() {
           {/* Contact */}
           <div className={styles.section}>
             <h4 className={styles.title}>Contact</h4>
-            <ul className={styles.list}>
-              <li className={styles.listItem}>
-                <MapPin size={16} className={styles.icon} />
-                <span>
+            <ul className={styles.linkList}>
+              <li className={styles.contactItem}>
+                <MapPin size={16} className={styles.contactIcon} style={{ marginTop: '2px' }} />
+                <a 
+                  href="https://maps.google.com/?q=Raj+Scans,+OMR,+Kottivakkam,+Chennai" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
                   2 & 26, Srinivasan Nagar,<br/>
                   Rajiv Gandhi Salai (OMR),<br/>
                   Kottivakkam, Chennai - 600 041
-                </span>
+                </a>
               </li>
-              <li className={styles.listItem}>
-                <Phone size={16} className={styles.icon} />
+              <li className={styles.contactItem}>
+                <Phone size={16} className={styles.contactIcon} style={{ marginTop: '2px' }} />
                 <a href="tel:+919944498000" className={styles.link}>+91 99444 98000</a>
               </li>
-              <li className={styles.listItem}>
-                <Mail size={16} className={styles.icon} />
+              <li className={styles.contactItem}>
+                <Mail size={16} className={styles.contactIcon} style={{ marginTop: '2px' }} />
                 <a href="mailto:rajscansappointments@gmail.com" className={styles.link}>rajscansappointments@gmail.com</a>
               </li>
             </ul>
