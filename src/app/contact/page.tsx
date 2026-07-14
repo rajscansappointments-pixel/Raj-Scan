@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <Mail size={24} />
                 </div>
                 <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--color-brand-navy)' }}>Email</h3>
-                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>[Email Address Placeholder]</p>
+                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>rajscansappointments@gmail.com</p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)' }}>
@@ -77,7 +77,7 @@ export default function ContactPage() {
               {/* Map Embedded */}
               <div style={{ width: '100%', height: '400px', backgroundColor: 'var(--color-neutral-200)', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.95373531550415!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1614234509341!5m2!1sen!2sin" 
+                  src="https://maps.google.com/maps?q=2%20%26%2026%2C%20Srinivasan%20Nagar%2C%20Rajiv%20Gandhi%20Salai%20(OMR)%2C%20Kottivakkam%2C%20Chennai%20-%20600%20041&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 

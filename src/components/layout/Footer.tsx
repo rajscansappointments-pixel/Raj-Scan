@@ -64,7 +64,7 @@ export function Footer() {
               </li>
               <li className={styles.listItem}>
                 <Mail size={16} className={styles.icon} />
-                <a href="mailto:info@rajscans.com" className={styles.link}>info@rajscans.com</a>
+                <a href="mailto:rajscansappointments@gmail.com" className={styles.link}>rajscansappointments@gmail.com</a>
               </li>
             </ul>
           </div>

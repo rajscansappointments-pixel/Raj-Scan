@@ -2,7 +2,7 @@
 
 import nodemailer from 'nodemailer';
 
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'contact@rajscans.com';
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'rajscansappointments@gmail.com';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
