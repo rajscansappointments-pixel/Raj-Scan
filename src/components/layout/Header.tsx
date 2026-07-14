@@ -57,7 +57,7 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className={styles.actions}>
-            <Link href="tel:+919840067900" style={{ textDecoration: 'none' }}>
+            <Link href="tel:+919944498000" style={{ textDecoration: 'none' }}>
               <Button variant="ghost">Call Us</Button>
             </Link>
             <Link href="/contact" style={{ textDecoration: 'none' }}>

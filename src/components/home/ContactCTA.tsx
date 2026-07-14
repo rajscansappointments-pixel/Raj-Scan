@@ -12,9 +12,9 @@ export function ContactCTA({ defaultService }: { defaultService?: string }) {
           title="Ready to Book Your Scan?"
           description="Call our dedicated helpline to schedule an appointment or get answers to your queries. We are here to assist you."
           primaryActionText="Call Us Now"
-          primaryActionHref="tel:+919840067900"
+          primaryActionHref="tel:+919944498000"
           secondaryActionText="Chat on WhatsApp"
-          secondaryActionHref="https://wa.me/919840067900"
+          secondaryActionHref="https://wa.me/919944498000"
         />
         
         <div style={{ marginTop: 'var(--space-64)', backgroundColor: 'var(--color-surface-card)', padding: 'var(--space-48)', borderRadius: 'var(--radius-xl)', border: 'var(--border-width) solid var(--color-neutral-200)' }}>

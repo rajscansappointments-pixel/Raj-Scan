@@ -52,11 +52,15 @@ export function Footer() {
             <ul className={styles.list}>
               <li className={styles.listItem}>
                 <MapPin size={16} className={styles.icon} />
-                <span>123 Healthcare Avenue, Medical District</span>
+                <span>
+                  2 & 26, Srinivasan Nagar,<br/>
+                  Rajiv Gandhi Salai (OMR),<br/>
+                  Kottivakkam, Chennai - 600 041
+                </span>
               </li>
               <li className={styles.listItem}>
                 <Phone size={16} className={styles.icon} />
-                <a href="tel:+919840067900" className={styles.link}>+91 98400 67900</a>
+                <a href="tel:+919944498000" className={styles.link}>+91 99444 98000</a>
               </li>
               <li className={styles.listItem}>
                 <Mail size={16} className={styles.icon} />

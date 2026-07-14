@@ -33,7 +33,12 @@ export default function ContactPage() {
                   <MapPin size={24} />
                 </div>
                 <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--color-brand-navy)' }}>Location</h3>
-                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>[Full Address Placeholder]</p>
+                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>
+                  2 & 26, Srinivasan Nagar<br/>
+                  Rajiv Gandhi Salai (OMR)<br/>
+                  Kottivakkam<br/>
+                  Chennai - 600 041
+                </p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)' }}>
@@ -41,7 +46,7 @@ export default function ContactPage() {
                   <Phone size={24} />
                 </div>
                 <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--color-brand-navy)' }}>Phone</h3>
-                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>[Phone Number Placeholder]</p>
+                <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>+91 99444 98000</p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)' }}>

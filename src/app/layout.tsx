@@ -49,7 +49,7 @@ const jsonLd = {
   image: 'https://www.rajscans.com/og-image.jpg',
   '@id': 'https://www.rajscans.com',
   url: 'https://www.rajscans.com',
-  telephone: '+919840067900',
+  telephone: '+919944498000',
   priceRange: '₹₹',
   openingHoursSpecification: [
     {
@@ -67,9 +67,9 @@ const jsonLd = {
   ],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '123 Healthcare Avenue, Medical District',
+    streetAddress: '2 & 26, Srinivasan Nagar, Rajiv Gandhi Salai (OMR), Kottivakkam',
     addressLocality: 'Chennai',
-    postalCode: '600001',
+    postalCode: '600041',
     addressCountry: 'IN'
   }
 };
