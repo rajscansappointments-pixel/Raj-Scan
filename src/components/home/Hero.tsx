@@ -27,7 +27,7 @@ export function Hero() {
             Raj Scans combines advanced technology with expert radiologists to deliver results you can trust.
           </p>
           <div className={styles.actions}>
-            <Link href="/contact" style={{ textDecoration: 'none' }}>
+            <Link href="/packages" style={{ textDecoration: 'none' }}>
               <Button variant="accent" size="lg">Book a Scan</Button>
             </Link>
             <Link href="/services" style={{ textDecoration: 'none' }}>

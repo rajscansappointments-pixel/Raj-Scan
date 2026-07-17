@@ -60,7 +60,7 @@ export function Header() {
             <Link href="tel:+919944498000" style={{ textDecoration: 'none' }}>
               <Button variant="ghost">Call Us</Button>
             </Link>
-            <Link href="/contact" style={{ textDecoration: 'none' }}>
+            <Link href="/packages" style={{ textDecoration: 'none' }}>
               <Button variant="accent">Book a Scan</Button>
             </Link>
           </div>
@@ -93,8 +93,12 @@ export function Header() {
             ))}
           </nav>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', marginTop: 'var(--space-24)' }}>
-            <Button variant="secondary" size="lg">Call Us</Button>
-            <Button variant="accent" size="lg">Book a Scan</Button>
+            <Link href="tel:+919944498000" style={{ textDecoration: 'none' }}>
+              <Button variant="secondary" size="lg" style={{ width: '100%' }}>Call Us</Button>
+            </Link>
+            <Link href="/packages" style={{ textDecoration: 'none' }}>
+              <Button variant="accent" size="lg" style={{ width: '100%' }}>Book a Scan</Button>
+            </Link>
           </div>
         </div>
       )}
