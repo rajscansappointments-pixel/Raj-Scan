@@ -8,12 +8,13 @@
 
 html, body {
   min-height: 100vh;
-  background-color: var(--color-surface-warm);
+  background-color: var(--color-brand-bg, #F8FAFC);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {

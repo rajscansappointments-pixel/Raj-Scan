@@ -1,15 +1,16 @@
 .section {
-  padding-top: var(--space-64);
-  padding-bottom: var(--space-64);
+  padding-top: var(--space-80);
+  padding-bottom: var(--space-80);
 }
 
+/* Alternate sections get pure white (page bg is #F8FAFC) */
 .section.alternate {
-  background-color: var(--color-surface-card);
+  background-color: #ffffff;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-top: var(--space-96);
-    padding-bottom: var(--space-96);
+    padding-top: var(--space-120);
+    padding-bottom: var(--space-120);
   }
 }

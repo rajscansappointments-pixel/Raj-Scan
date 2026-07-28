@@ -2,24 +2,31 @@
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background-color: var(--color-surface-card);
-  border-bottom: var(--border-width) solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-neutral-200);
+  box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 300ms ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 20px rgba(15, 23, 42, 0.1);
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 100px;
 }
 
 .logo {
-  font-family: var(--font-serif);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-brand-navy);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
+  max-height: 85px;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .desktopNav {
@@ -30,20 +37,163 @@
 
 .navLink {
   font-family: var(--font-sans);
-  font-size: var(--text-sm);
+  font-size: var(--text-base, 1.05rem);
   font-weight: 500;
   color: var(--color-text-secondary);
+  text-decoration: none;
   transition: color var(--transition-fast);
+  position: relative;
 }
 
-.navLink:hover, .navLink[data-active="true"] {
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-brand-red);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 250ms ease;
+  border-radius: 2px;
+}
+
+.navLink:hover,
+.navLink[data-active='true'] {
   color: var(--color-brand-navy);
+}
+
+.navLink:hover::after,
+.navLink[data-active='true']::after {
+  transform: scaleX(1);
 }
 
 .actions {
   display: none;
   align-items: center;
-  gap: var(--space-16);
+  gap: var(--space-20);
+}
+
+.phoneWrapper {
+  position: relative;
+}
+
+.callUsBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--text-base, 1.05rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-8);
+  transition: color var(--transition-fast);
+}
+
+.callUsBtn:hover, .phoneWrapper:hover .callUsBtn {
+  color: var(--color-brand-navy);
+}
+
+.phonePopover {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 240px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--color-neutral-200);
+  overflow: hidden;
+  z-index: 100;
+  animation: slideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-10, 0.625rem) var(--space-16);
+  background: var(--color-success-bg);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-success);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  position: relative;
+}
+
+.statusDot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.popoverContent {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+}
+
+.popoverLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-brand-navy);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+}
+
+.popoverLink:hover {
+  background: var(--color-neutral-50);
+  color: var(--color-brand-red);
+}
+
+.popoverLink svg {
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-fast);
+}
+
+.popoverLink:hover svg {
+  color: var(--color-brand-red);
 }
 
 .mobileToggle {
@@ -53,7 +203,12 @@
   color: var(--color-brand-navy);
   cursor: pointer;
   padding: var(--space-8);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.mobileToggle:hover {
+  background-color: var(--color-neutral-100);
 }
 
 .mobileToggle:focus-visible {
@@ -63,7 +218,7 @@
 /* Mobile Nav Overlay */
 .mobileNavOverlay {
   position: fixed;
-  top: 72px; /* Header height */
+  top: 80px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -74,18 +229,27 @@
   padding: var(--space-24);
   gap: var(--space-24);
   overflow-y: auto;
+  border-top: 1px solid var(--color-neutral-200);
 }
 
 .mobileNavLink {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 500;
-  color: var(--color-brand-navy);
-  padding: var(--space-12) 0;
-  border-bottom: var(--border-width) solid var(--color-neutral-100);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: var(--space-14, 0.875rem) 0;
+  border-bottom: 1px solid var(--color-neutral-100);
+  transition: color var(--transition-fast);
+}
+
+.mobileNavLink:hover,
+.mobileNavLink[data-active='true'] {
+  color: var(--color-brand-red);
 }
 
 @media (min-width: 1024px) {
-  .desktopNav, .actions {
+  .desktopNav,
+  .actions {
     display: flex;
   }
   .mobileToggle {

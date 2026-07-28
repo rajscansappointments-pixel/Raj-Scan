@@ -11,6 +11,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    qualities: [25, 50, 75, 80, 85, 90, 95, 100],
+  },
   async headers() {
     return [
       {

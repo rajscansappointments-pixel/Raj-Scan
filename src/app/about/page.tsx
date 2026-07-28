@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import { AboutIntro } from '@/components/home/AboutIntro';
 import { Technology } from '@/components/home/Technology';
-import { ContactCTA } from '@/components/home/ContactCTA';
+import { MissionVision } from '@/components/about/MissionVision';
 
 export const metadata: Metadata = {
   title: 'About Us | Raj Scans',
@@ -31,20 +31,7 @@ export default function AboutPage() {
 
       <Section alternate>
         <Container>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-48)' }}>
-            <div>
-              <SectionTitle 
-                title="Our Mission" 
-                description="To provide the highest quality diagnostic services with utmost precision, care, and compassion, ensuring our patients and referring physicians receive accurate information for better health outcomes."
-              />
-            </div>
-            <div>
-              <SectionTitle 
-                title="Our Vision" 
-                description="To be the most trusted and preferred diagnostic center, recognized for our commitment to technological advancement, clinical excellence, and patient-centric care."
-              />
-            </div>
-          </div>
+          <MissionVision />
         </Container>
       </Section>
 
@@ -53,8 +40,6 @@ export default function AboutPage() {
           <Technology />
         </Container>
       </Section>
-
-      <ContactCTA />
     </>
   );
 }

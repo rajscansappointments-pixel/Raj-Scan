@@ -1,50 +1,33 @@
-import { Star } from 'lucide-react';
-import { SectionTitle } from '@/components/shared/SectionTitle';
 import styles from './Testimonials.module.css';
 
 const testimonials = [
   {
     name: 'Suresh Kumar',
-    quote: '"Very professional and quick service. The facilities are top-notch, and the staff made sure I was comfortable throughout my MRI scan."',
-    initial: 'S',
+    quote: 'The level of professionalism is unmatched. Reports were delivered within hours, allowing my surgeon to proceed without delay. Highly recommended.',
   },
   {
     name: 'Priya Rajan',
-    quote: '"Received my reports within hours! The accuracy and detailed explanation from the consulting doctor were truly appreciated."',
-    initial: 'P',
+    quote: 'Extremely clean environment and very courteous staff. The radiologist took the time to explain the process, which completely eased my anxiety.',
   },
   {
     name: 'Anand V.',
-    quote: '"Extremely clean environment and very courteous staff. I highly recommend Raj Scans for any diagnostic requirements."',
-    initial: 'A',
+    quote: 'I have visited many diagnostic centres, but Raj Scans stands out for its precision and efficiency. A truly premium healthcare experience.',
   },
 ];
 
 export function Testimonials() {
   return (
-    <div>
-      <SectionTitle
-        align="center"
-        subtitle="Patient Feedback"
-        title="What Our Patients Say"
-      />
+    <div className={styles.section}>
+      <div className={styles.header}>
+        <p className={styles.eyebrow}>Patient Stories</p>
+        <h2 className={styles.heading}>Trusted by thousands.</h2>
+      </div>
       
       <div className={styles.grid}>
         {testimonials.map((t, index) => (
           <div key={index} className={styles.card}>
-            <div className={styles.stars}>
-              {[1, 2, 3, 4, 5].map(star => (
-                <Star key={star} size={16} fill="currentColor" />
-              ))}
-            </div>
-            <p className={styles.quote}>{t.quote}</p>
-            <div className={styles.author}>
-              <div className={styles.avatar}>{t.initial}</div>
-              <div>
-                <div className={styles.name}>{t.name}</div>
-                <div className={styles.role}>Patient</div>
-              </div>
-            </div>
+            <p className={styles.quote}>&ldquo;{t.quote}&rdquo;</p>
+            <p className={styles.name}>— {t.name}</p>
           </div>
         ))}
       </div>

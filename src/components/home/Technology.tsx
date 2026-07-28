@@ -1,39 +1,59 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Settings, Monitor, Zap, Disc } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import styles from './Technology.module.css';
 
 const equipment = [
   {
-    name: '3 Tesla MRI',
-    desc: 'High-resolution imaging for neurology and musculoskeletal diagnostics.',
+    name: 'Siemens Magnetom Sempra (MRI 1.5T)',
+    desc: 'Tim+Dots coil technology, 97% noise reduction, Zero Helium boil-off magnet, brain scans in under 10 minutes.',
     icon: <Monitor size={24} />,
   },
   {
-    name: '128 Slice CT',
-    desc: 'Ultra-fast scanning for cardiac and advanced vascular imaging.',
+    name: 'Siemens SOMATOM go-Now (CT 32-Slice)',
+    desc: 'AI-powered scan automation, 20% faster patient prep, 90% more time with the patient per scan session.',
     icon: <Disc size={24} />,
   },
   {
-    name: '4D Ultrasound',
-    desc: 'Real-time structural viewing for obstetrics and general sonography.',
+    name: 'Mindray Resona I9 (Ultrasound 3D/4D)',
+    desc: 'ZONE Sonography Technology+ (ZST+), AI-powered breast & thyroid analysis, microvascular visualisation.',
     icon: <Zap size={24} />,
   },
   {
-    name: 'Digital X-Ray',
-    desc: 'Low radiation exposure with immediate digital processing.',
+    name: 'Digix ECO Plus (Digital X-Ray)',
+    desc: 'Motorised 3D ceiling stand, preview in under 5 seconds, 1000+ APR programmes, wide dynamic range.',
     icon: <Settings size={24} />,
   },
 ];
 
+const images = [
+  { src: '/images/facility/mri-scanner.jpg', alt: 'Siemens MRI Scanner' },
+  { src: '/images/facility/ct-scanner.jpg', alt: 'Siemens CT Scanner' },
+  { src: '/images/facility/ultrasound.jpg', alt: 'Mindray Ultrasound' },
+  { src: '/images/facility/digital-xray.jpg', alt: 'Digital X-Ray System' }
+];
+
 export function Technology() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <SectionTitle
-          subtitle="Advanced Technology"
-          title="Equipped for Precision"
-          description="We continually invest in the latest diagnostic technology to ensure our patients receive the most accurate results possible, quickly and safely."
+          subtitle="Our Equipment"
+          title="Siemens & Mindray Technology"
+          description="Raj Scans invests in proven imaging platforms from Siemens Healthineers and Mindray to ensure every patient receives consistent, high-quality diagnostic results."
         />
         
         <div className={styles.equipmentGrid}>
@@ -49,15 +69,28 @@ export function Technology() {
         </div>
       </div>
 
-      <div className={styles.imageWrapper}>
-        <Image
-          src="/images/equipment/mri-machine.jpg"
-          alt="State-of-the-art 3 Tesla MRI machine at Raj Scans"
-          fill
-          quality={85}
-          className={styles.image}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-        />
+      <div className={styles.imageWrapper} style={{ position: 'relative', overflow: 'hidden' }}>
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
+            <Image
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              fill
+              quality={85}
+              className={styles.image}
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority={currentIndex === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

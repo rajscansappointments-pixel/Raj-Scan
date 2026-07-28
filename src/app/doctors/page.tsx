@@ -4,7 +4,6 @@ import { Section } from '@/components/layout/Section';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SectionTitle } from '@/components/shared/SectionTitle';
-import { ContactCTA } from '@/components/home/ContactCTA';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 
 export const metadata: Metadata = {
@@ -51,8 +50,6 @@ export default function DoctorsPage() {
           </div>
         </Container>
       </Section>
-
-      <ContactCTA />
     </>
   );
 }

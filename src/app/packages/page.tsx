@@ -3,7 +3,6 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 
 import { PackagesPreview } from '@/components/home/PackagesPreview';
-import { ContactCTA } from '@/components/home/ContactCTA';
 
 export const metadata: Metadata = {
   title: 'Health Packages | Raj Scans',
@@ -19,8 +18,6 @@ export default function PackagesPage() {
           <PackagesPreview />
         </Container>
       </Section>
-
-      <ContactCTA defaultService="Health Package" />
     </>
   );
 }

@@ -1,53 +1,46 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
-import { SectionTitle } from '@/components/shared/SectionTitle';
-import { Button } from '@/components/ui/Button';
+import { ArrowRight } from 'lucide-react';
 import styles from './AboutIntro.module.css';
-
-const features = [
-  'Highly qualified team of Radiologists',
-  'State-of-the-art diagnostic equipment',
-  'Fast and accurate reporting',
-  'Patient-centric comfortable environment',
-];
 
 export function AboutIntro() {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.imageWrapper}>
-        <Image
-          src="/images/about/about-facility.png"
-          alt="Raj Scans modern clinic reception and waiting area"
-          fill
-          quality={85}
-          className={styles.image}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-        />
-      </div>
-      
-      <div className={styles.content}>
-        <SectionTitle
-          subtitle="About Raj Scans"
-          title="Committed to Diagnostic Excellence"
-          description="Since our establishment, Raj Scans has been at the forefront of medical imaging. We believe that accurate diagnosis is the first and most crucial step towards effective treatment."
-        />
-        
-        <div className={styles.features}>
-          {features.map((feature, index) => (
-            <div key={index} className={styles.feature}>
-              <CheckCircle2 className={styles.icon} size={20} />
-              <span>{feature}</span>
-            </div>
-          ))}
-        </div>
 
-        <div style={{ marginTop: 'var(--space-16)' }}>
-          <Link href="/about" style={{ textDecoration: 'none' }}>
-            <Button variant="secondary" size="lg">More About Us</Button>
-          </Link>
+      {/* Image */}
+      <div className={styles.imageCol}>
+        <div className={styles.imageFrame}>
+          <Image
+            src="/images/facility/logo-wall.jpg"
+            alt="Raj Scans — diagnostic centre reception, OMR Chennai"
+            fill
+            quality={90}
+            sizes="(max-width: 900px) 100vw, 48vw"
+            className={styles.img}
+          />
+        </div>
+        <div className={styles.badge}>
+          <span className={styles.badgeNum}>25<sup>+</sup></span>
+          <span className={styles.badgeTxt}>Years of<br />Trusted Care</span>
         </div>
       </div>
+
+      {/* Text */}
+      <div className={styles.textCol}>
+        <p className={styles.eyebrow}>About Raj Scans</p>
+        <h2 className={styles.heading}>Imaging with Care.<br />For 25 Years and Beyond.</h2>
+        <p className={styles.body}>
+          What began in Dindigul 25 years ago was driven by a single, unwavering vision: to provide patients with clinical excellence in an environment that feels safe, comforting, and deeply human.
+        </p>
+        <p className={styles.body}>
+          Today, that same founding commitment has brought us to Chennai&apos;s OMR corridor. While our technology has continuously evolved, our philosophy remains unchanged. We believe that true healthcare is a delicate balance of absolute diagnostic precision and genuine empathy. When you walk through our doors, you aren&apos;t just a number or a scan — you are a person seeking answers, and our entire team is dedicated to supporting you with clarity and compassionate care.
+        </p>
+
+        <Link href="/about" className={styles.link}>
+          Our Story <ArrowRight size={16} strokeWidth={2.5} />
+        </Link>
+      </div>
+
     </div>
   );
 }

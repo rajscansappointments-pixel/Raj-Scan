@@ -25,6 +25,13 @@
   padding: var(--space-16);
   border-radius: var(--radius-md);
   border: var(--border-width) solid var(--color-neutral-200);
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.equipmentItem:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-brand-red);
 }
 
 .icon {

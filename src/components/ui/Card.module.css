@@ -4,10 +4,11 @@
   border: var(--border-width) solid var(--border-color);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow var(--transition-normal);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .card:hover {
+  transform: translateY(-8px) scale(1.01);
   box-shadow: var(--shadow-xl);
 }
 

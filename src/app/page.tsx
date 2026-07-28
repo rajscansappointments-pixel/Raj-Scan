@@ -2,26 +2,25 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
-import { Hero } from '@/components/home/Hero';
-import { TrustHighlights } from '@/components/home/TrustHighlights';
-import { AboutIntro } from '@/components/home/AboutIntro';
-import { ServicesPreview } from '@/components/home/ServicesPreview';
-import { PackagesPreview } from '@/components/home/PackagesPreview';
-import { Technology } from '@/components/home/Technology';
-import { WhyChooseUs } from '@/components/home/WhyChooseUs';
-import { Testimonials } from '@/components/home/Testimonials';
-import { ContactCTA } from '@/components/home/ContactCTA';
+import dynamic from 'next/dynamic';
+
+const Hero = dynamic(() => import('@/components/home/Hero').then((mod) => mod.Hero));
+const AboutIntro = dynamic(() => import('@/components/home/AboutIntro').then((mod) => mod.AboutIntro));
+const ServicesPreview = dynamic(() => import('@/components/home/ServicesPreview').then((mod) => mod.ServicesPreview));
+const PackagesPreview = dynamic(() => import('@/components/home/PackagesPreview').then((mod) => mod.PackagesPreview));
+const StorySection = dynamic(() => import('@/components/home/StorySection').then((mod) => mod.StorySection));
+const Testimonials = dynamic(() => import('@/components/home/Testimonials').then((mod) => mod.Testimonials));
+const FAQ = dynamic(() => import('@/components/home/FAQ').then((mod) => mod.FAQ));
 
 export const metadata = {
-  title: 'Raj Scans | Premium Diagnostic Center',
-  description: 'Experience state-of-the-art diagnostic imaging with unparalleled precision. MRI, CT Scans, Ultrasound, and full health packages.',
+  title: 'Raj Scans | Premium Diagnostic Center — Chennai OMR',
+  description: 'Experience state-of-the-art diagnostic imaging with unparalleled precision. MRI, CT Scans, Ultrasound, Color Doppler and full health packages in Chennai.',
 };
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustHighlights />
 
       <Section id="about">
         <Container>
@@ -41,26 +40,20 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section id="technology" alternate>
-        <Container>
-          <Technology />
-        </Container>
-      </Section>
+      <StorySection />
 
-      <Section id="why-choose-us">
-        <Container>
-          <WhyChooseUs />
-        </Container>
-      </Section>
-
-      <Section id="testimonials" alternate>
+      <Section id="testimonials">
         <Container>
           <Testimonials />
         </Container>
       </Section>
 
-      <ContactCTA />
-      
+      <Section id="faq" alternate>
+        <Container>
+          <FAQ />
+        </Container>
+      </Section>
+
       <ScrollToTop />
     </>
   );

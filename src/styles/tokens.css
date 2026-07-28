@@ -1,47 +1,56 @@
 :root {
-  /* Brand Colors */
-  --color-brand-navy: hsl(220, 45%, 18%);
-  --color-brand-navy-light: hsl(220, 45%, 28%);
+  /* === PREMIUM BRAND PALETTE (Raj Scans) === */
+  --color-brand-red: #B91C1C;
+  --color-brand-red-dark: #991B1B;
+  --color-brand-red-light: #FEE2E2;
+  --color-brand-navy: #0F172A;
+  --color-brand-navy-mid: #1E293B;
+  --color-brand-navy-light: #334155;
+  --color-brand-bg: #F8FAFC;
+  --color-accent-gold: #D4AF37;
+  --color-accent-gold-light: #F6E89A;
+  --color-accent-gold-dark: #B8960C;
+
+  /* Legacy aliases kept for backward compatibility */
   --color-brand-teal: hsl(185, 50%, 28%);
-  --color-accent-gold: hsl(42, 65%, 48%);
-  --color-accent-gold-hover: hsl(42, 65%, 42%);
+  --color-accent-gold-hover: #B8960C;
 
   /* Neutral Palette */
-  --color-neutral-50: hsl(210, 20%, 98%);
-  --color-neutral-100: hsl(210, 20%, 95%);
-  --color-neutral-200: hsl(210, 15%, 90%);
-  --color-neutral-300: hsl(210, 15%, 80%);
-  --color-neutral-400: hsl(210, 10%, 60%);
-  --color-neutral-500: hsl(210, 10%, 45%);
-  --color-neutral-600: hsl(210, 15%, 35%);
-  --color-neutral-700: hsl(210, 20%, 25%);
-  --color-neutral-800: hsl(210, 25%, 15%);
-  --color-neutral-900: hsl(210, 30%, 10%);
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
 
   /* Surface Hierarchy */
-  --color-surface-warm: hsl(30, 20%, 97%); /* Main app background */
-  --color-surface-card: hsl(0, 0%, 100%); /* Clean white cards */
-  --color-surface-sunken: hsl(210, 20%, 95%); /* Inputs, disabled states */
-  --color-surface-overlay: hsla(210, 30%, 10%, 0.5); /* Modal backdrops */
+  --color-surface-warm: #F8FAFC;
+  --color-surface-card: #FFFFFF;
+  --color-surface-sunken: #F1F5F9;
+  --color-surface-overlay: rgba(15, 23, 42, 0.6);
 
   /* Text Hierarchy */
-  --color-text-primary: var(--color-neutral-800);
-  --color-text-secondary: var(--color-neutral-600);
-  --color-text-tertiary: var(--color-neutral-400);
-  --color-text-inverse: var(--color-surface-card);
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #94A3B8;
+  --color-text-inverse: #FFFFFF;
 
   /* Semantic / Feedback Colors */
   --color-success: hsl(142, 60%, 35%);
   --color-success-bg: hsl(142, 60%, 95%);
   --color-warning: hsl(35, 90%, 45%);
   --color-warning-bg: hsl(35, 90%, 95%);
-  --color-error: hsl(0, 70%, 45%);
-  --color-error-bg: hsl(0, 70%, 95%);
+  --color-error: #B91C1C;
+  --color-error-bg: #FEE2E2;
   --color-info: hsl(210, 80%, 45%);
   --color-info-bg: hsl(210, 80%, 95%);
 
   /* Focus & Accessibility */
-  --color-focus-ring: hsla(185, 50%, 28%, 0.4);
+  --color-focus-ring: rgba(185, 28, 28, 0.35);
 
   /* Spacing Scale (8pt grid) */
   --space-2: 0.125rem;
@@ -86,16 +95,21 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
   --radius-full: 9999px;
   --border-width: 1px;
   --border-color: var(--color-neutral-200);
 
-  /* Elevation (Shadows) */
+  /* Elevation (Shadows) — Premium */
   --shadow-none: none;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-  --shadow-xl: 0 20px 40px -5px rgba(0, 0, 0, 0.05); /* Premium diffuse shadow */
+  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 30px -4px rgba(0,0,0,0.10), 0 4px 8px -2px rgba(0,0,0,0.05);
+  --shadow-xl: 0 24px 48px -8px rgba(15,23,42,0.12), 0 8px 16px -4px rgba(15,23,42,0.06);
+  --shadow-card: 0 2px 8px rgba(15,23,42,0.06), 0 8px 24px rgba(15,23,42,0.05);
+  --shadow-card-hover: 0 8px 24px rgba(15,23,42,0.10), 0 16px 40px rgba(15,23,42,0.08);
+  --shadow-hero-image: 0 32px 64px -12px rgba(15,23,42,0.20);
 
   /* Motion & Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,4 +130,13 @@
   --grid-gutter-desktop: 24px;
   --grid-gutter-tablet: 20px;
   --grid-gutter-mobile: 16px;
+
+  /* Glassmorphism & Premium UI */
+  --glass-bg: hsla(0, 0%, 100%, 0.7);
+  --glass-bg-dark: hsla(210, 30%, 10%, 0.7);
+  --glass-border: 1px solid hsla(0, 0%, 100%, 0.5);
+  --glass-border-dark: 1px solid hsla(210, 20%, 95%, 0.1);
+  --glass-blur: blur(12px);
+  --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

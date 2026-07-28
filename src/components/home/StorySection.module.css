@@ -1,0 +1,202 @@
+.section {
+  background-color: var(--color-brand-navy);
+  color: var(--color-surface-card);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Top Section (Why Raj Scans) ── */
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 1024px) {
+  .topSection {
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: flex-start;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 120px;
+}
+
+.eyebrow {
+  color: var(--color-accent-gold);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.heading {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #fff;
+}
+
+.editorial {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-neutral-300);
+  margin: 0;
+}
+
+.learnMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent-gold);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  margin-top: 16px;
+}
+
+.learnMoreLink:hover {
+  opacity: 0.8;
+  gap: 12px;
+}
+
+/* ── Feature Grid ── */
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 640px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 48px;
+    row-gap: 56px;
+  }
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.featureCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featureCard:hover::before {
+  opacity: 1;
+}
+
+.featureHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.featureNum {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  opacity: 0.8;
+}
+
+.featureIcon {
+  color: var(--color-accent-gold);
+  padding: 8px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  box-sizing: content-box;
+}
+
+.featureTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.featureDesc {
+  font-size: 0.9375rem;
+  color: var(--color-neutral-300);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Trust Strip ── */
+.trustSection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.thinDivider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.trustStrip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px 24px;
+  text-align: center;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.trustText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-neutral-200);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.trustBullet {
+  color: var(--color-accent-gold);
+  font-size: 1.25rem;
+}
