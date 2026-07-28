@@ -3,7 +3,6 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import { SectionTitle } from '@/components/shared/SectionTitle';
 import { AboutIntro } from '@/components/home/AboutIntro';
 import { Technology } from '@/components/home/Technology';
 import { MissionVision } from '@/components/about/MissionVision';

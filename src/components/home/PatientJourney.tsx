@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Calendar, Building, Activity, UserCheck, FileText, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
@@ -36,7 +36,7 @@ const steps = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -47,12 +47,12 @@ const containerVariants = {
   }
 };
 
-const stepVariants = {
+const stepVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 

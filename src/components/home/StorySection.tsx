@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Monitor, Users, Microscope, Heart, CircleDollarSign, Building, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
@@ -49,7 +49,7 @@ const trustIndicators = [
   'Fast Reports',
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -57,7 +57,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 15 },
   visible: { 
     opacity: 1, 

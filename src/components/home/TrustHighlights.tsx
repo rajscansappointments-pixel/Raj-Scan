@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { Award, MapPin, HeartPulse, Activity } from 'lucide-react';
 import styles from './TrustHighlights.module.css';
 
 const stats = [
-  { value: 25,  suffix: '+',  unit: 'Years',    label: 'of Trusted Healthcare' },
-  { value: 3,   suffix: '',   unit: 'Branches',  label: 'Dindigul, Chennai & Sivagangai' },
-  { value: 7,   suffix: '',   unit: 'Services',  label: 'Under One Roof' },
-  { value: 32,  suffix: '',   unit: 'Slice CT',  label: 'Siemens SOMATOM go-Now' },
+  { icon: Award, target: 25, suffix: '+', label: 'Years of Trusted Healthcare' },
+  { icon: MapPin, target: 3, suffix: '', label: 'Branches (Dindigul, Chennai, Sivagangai)' },
+  { icon: HeartPulse, target: 7, suffix: '', label: 'Diagnostic Services Under One Roof' },
+  { icon: Activity, target: 32, suffix: ' Slice', label: 'CT (Siemens SOMATOM go-Now)' },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -21,25 +22,30 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !ran.current) {
         ran.current = true;
-        const duration = 1600;
-        const fps = 60;
-        const steps = Math.round((duration / 1000) * fps);
-        let step = 0;
-        const timer = setInterval(() => {
-          step++;
-          const progress = step / steps;
-          const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        
+        let start: number | null = null;
+        const duration = 1000; // Faster duration (1 second)
+
+        const step = (timestamp: number) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3); // Smooth easeOutCubic
           setCount(Math.round(ease * target));
-          if (step >= steps) clearInterval(timer);
-        }, 1000 / fps);
+          
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            setCount(target);
+          }
+        };
+        requestAnimationFrame(step);
       }
     }, { threshold: 0.5 });
     obs.observe(el);
     return () => obs.disconnect();
   }, [target]);
 
-  const display = target >= 10000 ? `${Math.floor(count / 1000)}k` : `${count}`;
-  return <span ref={ref}>{display}{suffix}</span>;
+  return <span ref={ref}>{count}{suffix}</span>;
 }
 
 export function TrustHighlights() {
@@ -47,10 +53,12 @@ export function TrustHighlights() {
     <div className={styles.strip}>
       {stats.map((s, i) => (
         <div key={i} className={styles.item}>
-          <div className={styles.number}>
-            <Counter target={s.value} suffix={s.suffix} />
+          <div className={styles.iconWrap}>
+            <s.icon size={24} strokeWidth={1.5} className={styles.icon} />
           </div>
-          <div className={styles.unit}>{s.unit}</div>
+          <div className={styles.number}>
+            <Counter target={s.target} suffix={s.suffix} />
+          </div>
           <div className={styles.label}>{s.label}</div>
         </div>
       ))}

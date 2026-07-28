@@ -4,7 +4,6 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import { SectionTitle } from '@/components/shared/SectionTitle';
 export const metadata: Metadata = {
   title: 'Contact Us | Raj Scans — Chennai, Dindigul & Sivagangai',
   description: 'Reach Raj Scans at our Chennai OMR, Dindigul, and Sivagangai branches. Find location maps, phone numbers, and our email address.',

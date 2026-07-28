@@ -11,6 +11,9 @@ export function CampaignHero() {
       <Container>
         <div className={styles.content}>
           <div className={styles.textContent}>
+            <p className={styles.subtitle}>
+              Experience the &quot;Raj Scans&quot; standard of care.
+            </p>
             <h1 className={styles.title}>
               Complete Body Health Checkups in <span className={styles.highlight}>Chennai</span>
             </h1>
@@ -39,7 +42,7 @@ export function CampaignHero() {
               </Button>
               
               <p className={styles.disclaimer}>
-                By clicking "Get a Call Back", you agree to our Terms & Conditions and Privacy Policy.
+                By clicking &quot;Get a Call Back&quot;, you agree to our Terms &amp; Conditions and Privacy Policy.
               </p>
             </form>
           </div>

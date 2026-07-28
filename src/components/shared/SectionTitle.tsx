@@ -1,9 +1,9 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import styles from './SectionTitle.module.css';
 
-export interface SectionTitleProps extends HTMLAttributes<HTMLDivElement> {
-  title: string;
+export interface SectionTitleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  title: ReactNode;
   subtitle?: string;
   description?: string;
   align?: 'left' | 'center';

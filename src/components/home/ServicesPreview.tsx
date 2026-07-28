@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ServicesPreview.module.css';
 
 const services = [

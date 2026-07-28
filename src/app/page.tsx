@@ -11,6 +11,7 @@ const PackagesPreview = dynamic(() => import('@/components/home/PackagesPreview'
 const StorySection = dynamic(() => import('@/components/home/StorySection').then((mod) => mod.StorySection));
 const Testimonials = dynamic(() => import('@/components/home/Testimonials').then((mod) => mod.Testimonials));
 const FAQ = dynamic(() => import('@/components/home/FAQ').then((mod) => mod.FAQ));
+const TrustHighlights = dynamic(() => import('@/components/home/TrustHighlights').then((mod) => mod.TrustHighlights));
 
 export const metadata = {
   title: 'Raj Scans | Premium Diagnostic Center — Chennai OMR',
@@ -21,6 +22,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustHighlights />
 
       <Section id="about">
         <Container>
