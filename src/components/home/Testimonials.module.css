@@ -66,3 +66,60 @@
   text-transform: uppercase;
   margin: 0;
 }
+
+.rating {
+  display: flex;
+  gap: 4px;
+}
+
+/* ─── MOBILE REDESIGN (max-width: 767px) ─── */
+@media (max-width: 767px) {
+  .section {
+    gap: var(--space-32);
+  }
+
+  .header {
+    padding: 0 var(--space-16);
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-16);
+    padding: 0 var(--space-16) var(--space-24);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 85%;
+    max-width: 320px;
+    scroll-snap-align: center;
+    background: #ffffff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: 16px;
+    padding: var(--space-24) var(--space-20);
+    gap: var(--space-16);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  }
+
+  .rating {
+    margin-bottom: var(--space-4);
+  }
+
+  .quote {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .name {
+    font-size: 0.8125rem;
+    margin-top: auto;
+  }
+}

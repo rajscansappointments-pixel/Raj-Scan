@@ -80,3 +80,61 @@
     order: -1;
   }
 }
+
+/* ─── MOBILE UX REDESIGN (max-width: 1023px) ─── */
+@media (max-width: 1023px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+
+  .content {
+    /* 'Unbox' the content div on mobile so its children become flex items of .wrapper */
+    display: contents; 
+  }
+
+  .imageWrapper {
+    order: 1; /* Force image to appear directly under the SectionTitle (which is default order 0) */
+    aspect-ratio: 4 / 3; /* More optimal for mobile screens than 1/1 */
+    border-radius: var(--radius-lg);
+  }
+
+  .equipmentGrid {
+    order: 2; /* Force grid to appear below the image */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-16);
+    padding-bottom: var(--space-16);
+    margin-top: 0;
+    
+    /* Hide scrollbars */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .equipmentGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipmentItem {
+    flex: 0 0 85%; /* Show part of next card to afford scrolling */
+    scroll-snap-align: start;
+    padding: var(--space-16);
+    flex-direction: column; /* Stack icon and text on mobile cards */
+    gap: var(--space-12);
+  }
+
+  .equipmentItem:hover {
+    /* Disable sticky desktop hover effects on mobile */
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-neutral-200);
+  }
+  
+  .icon {
+    margin-bottom: var(--space-4);
+  }
+}

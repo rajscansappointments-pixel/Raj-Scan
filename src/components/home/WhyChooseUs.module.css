@@ -315,3 +315,104 @@
 .trustBullet {
   color: var(--color-accent-gold);
 }
+
+/* ─── MOBILE REDESIGN (max-width: 1023px) ─── */
+@media (max-width: 1023px) {
+  .section {
+    padding: var(--space-64) 0;
+  }
+
+  .contentWrapper {
+    padding: 0 var(--space-16);
+    gap: var(--space-40);
+  }
+
+  .stickyContent {
+    position: relative;
+    top: 0;
+    text-align: center;
+    align-items: center;
+  }
+
+  .heading {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
+
+  .editorial {
+    max-width: 100%;
+    font-size: 1.0625rem;
+    margin-top: var(--space-12);
+  }
+
+  .cta {
+    align-self: center;
+  }
+
+  .grid {
+    gap: var(--space-16);
+  }
+
+  .featureCard {
+    padding: var(--space-20) var(--space-16);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Reveal hover interactions permanently for touch users */
+  .cardAccent {
+    transform: scaleY(1);
+    top: 15%;
+    bottom: 15%;
+    width: 2px;
+  }
+
+  .num {
+    color: var(--color-accent-gold);
+    font-size: 0.875rem;
+  }
+
+  .icon {
+    color: var(--color-accent-gold);
+  }
+
+  .cardTitle {
+    font-size: 1.125rem;
+  }
+
+  .cardBody {
+    font-size: 0.9375rem;
+    opacity: 1; /* Always fully legible */
+  }
+
+  .arrow {
+    opacity: 1; /* Always visible */
+    transform: translateX(0);
+  }
+
+  .thinDivider {
+    background: rgba(212, 175, 55, 0.2);
+  }
+
+  .cardFooter {
+    align-items: center;
+  }
+
+  .trustStrip {
+    margin: var(--space-48) auto 0;
+    padding: var(--space-32) var(--space-16);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+    text-align: center;
+  }
+
+  .trustItem {
+    justify-content: center;
+    font-size: 0.8125rem;
+  }
+
+  .trustBullet {
+    display: none;
+  }
+}

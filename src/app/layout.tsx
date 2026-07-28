@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 const Footer = dynamic(() => import('@/components/layout/Footer').then((mod) => mod.Footer));
 const AppointmentCard = dynamic(() => import('@/components/home/AppointmentCard').then((mod) => mod.AppointmentCard));
 const FloatingWhatsApp = dynamic(() => import('@/components/ui/FloatingWhatsApp').then((mod) => mod.FloatingWhatsApp));
+const MobileBottomBar = dynamic(() => import('@/components/layout/MobileBottomBar').then((mod) => mod.MobileBottomBar));
 import '@/styles/globals.css';
 
 const inter = Inter({
@@ -167,6 +168,7 @@ export default function RootLayout({
           <AppointmentCard />
           <Footer />
           <FloatingWhatsApp />
+          <MobileBottomBar />
         </div>
       </body>
     </html>

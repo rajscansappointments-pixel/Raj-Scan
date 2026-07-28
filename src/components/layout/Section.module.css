@@ -1,6 +1,6 @@
 .section {
-  padding-top: var(--space-80);
-  padding-bottom: var(--space-80);
+  padding-top: var(--space-64); /* Tighter mobile rhythm */
+  padding-bottom: var(--space-64);
 }
 
 /* Alternate sections get pure white (page bg is #F8FAFC) */

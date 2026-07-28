@@ -177,6 +177,24 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transform: translateY(0);
+}
+
+.featuredPanelActive {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -258,6 +276,34 @@
   flex-shrink: 0;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.bookBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-24);
+  height: 44px;
+  background-color: var(--color-brand-navy);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.bookBtn:hover {
+  background-color: var(--color-brand-red);
+  transform: translateY(-2px);
+}
+
 .learnMoreBtn {
   display: inline-flex;
   align-items: center;
@@ -266,12 +312,150 @@
   font-weight: 700;
   color: var(--color-brand-red);
   text-decoration: none;
-  margin-top: auto;
-  align-self: flex-start;
   transition: gap 200ms ease, color 200ms ease;
 }
 
 .learnMoreBtn:hover {
   gap: var(--space-12);
   color: var(--color-brand-red-dark, #991B1B);
+}
+
+/* ─── MOBILE REDESIGN (max-width: 1023px) ─── */
+@media (max-width: 1023px) {
+  /* Convert vertical stack to horizontal swipeable pill menu */
+  .grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-16);
+    gap: var(--space-12);
+    width: 100%;
+    min-width: 0; /* Fix CSS grid overflow issue */
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: none;
+    scroll-snap-align: start;
+    min-height: 48px;
+    padding: var(--space-12) var(--space-20);
+    border: 1px solid var(--color-neutral-200);
+    display: flex;
+    align-items: center;
+    border-radius: 9999px; /* Pill shape */
+  }
+
+  .card.active {
+    border-color: rgba(185, 28, 28, 0.3);
+    background: rgba(185, 28, 28, 0.04); /* Subtle active background */
+  }
+
+  /* Remove accent bar for pills */
+  .cardAccent {
+    display: none;
+  }
+
+  .cardInner {
+    gap: var(--space-12);
+  }
+
+  .abbr {
+    width: auto;
+    padding-right: var(--space-12);
+    border-right: 1px solid var(--color-neutral-200);
+  }
+
+  .cardTitle {
+    font-size: 1.0625rem;
+    white-space: nowrap;
+  }
+
+  .arrow {
+    display: none; /* Remove complexity on mobile cards */
+  }
+
+  /* Featured Panel Adjustments */
+  .featuredWrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    min-height: auto;
+  }
+
+  .featuredWrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .featuredPanel {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    position: relative; /* Override absolute positioning */
+    opacity: 1; /* Always visible */
+    visibility: visible;
+    pointer-events: auto;
+    transform: none; /* Remove slide/scale animation */
+    transition: none;
+  }
+
+  .featuredPanelActive {
+    transform: none;
+  }
+
+  .featuredImageWrap {
+    height: 200px;
+  }
+
+  .featuredContent {
+    padding: var(--space-24) var(--space-20);
+  }
+
+  .featuredTitle {
+    font-size: 1.5rem;
+  }
+
+  .featuredBody {
+    font-size: 1rem;
+  }
+
+  .benefitsList li {
+    font-size: 1rem;
+    align-items: flex-start;
+  }
+
+  .checkIcon {
+    margin-top: 4px; /* Align icon with first line of wrapped text */
+    width: 18px;
+    height: 18px;
+  }
+
+  .actions {
+    gap: var(--space-24);
+    flex-wrap: wrap;
+  }
+
+  .bookBtn {
+    height: 48px;
+    font-size: 0.9375rem;
+    padding: 0 var(--space-20);
+  }
+
+  .learnMoreBtn {
+    padding: var(--space-12) 0; /* Increase tap area */
+    font-size: 1rem;
+  }
 }

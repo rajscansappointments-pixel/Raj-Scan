@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import styles from './Testimonials.module.css';
 
 const testimonials = [
@@ -26,6 +27,11 @@ export function Testimonials() {
       <div className={styles.grid}>
         {testimonials.map((t, index) => (
           <div key={index} className={styles.card}>
+            <div className={styles.rating}>
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={16} fill="var(--color-accent-gold)" color="var(--color-accent-gold)" />
+              ))}
+            </div>
             <p className={styles.quote}>&ldquo;{t.quote}&rdquo;</p>
             <p className={styles.name}>— {t.name}</p>
           </div>

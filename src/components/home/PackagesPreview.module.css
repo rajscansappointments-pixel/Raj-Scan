@@ -236,3 +236,85 @@
 .btnSolid:hover {
   background: var(--color-brand-red-dark, #991B1B);
 }
+
+/* ─── MOBILE REDESIGN (max-width: 899px) ─── */
+@media (max-width: 899px) {
+  .section {
+    gap: var(--space-32);
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-16);
+    padding-bottom: var(--space-16);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 88%;
+    scroll-snap-align: center;
+    padding: var(--space-24) var(--space-20);
+    border-radius: 16px;
+  }
+
+  .featuredBadge {
+    padding: 0.375rem 1.25rem;
+    font-size: 0.8125rem;
+    top: -14px;
+  }
+
+  .cardHeader {
+    margin-bottom: var(--space-24);
+  }
+
+  .cardTitle {
+    font-size: 1.375rem;
+  }
+
+  .cardDesc {
+    font-size: 0.9375rem;
+  }
+
+  .priceWrap {
+    align-items: baseline;
+    margin-bottom: var(--space-24);
+    padding-bottom: var(--space-20);
+  }
+
+  .currency {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  .price {
+    font-size: 3.5rem; /* Emphasize price visibility */
+  }
+
+  .testList li {
+    font-size: 1rem; /* Better readability for features */
+    padding: 4px 0;
+  }
+
+  .testList {
+    margin: 0 0 var(--space-32) 0;
+  }
+
+  .btnOutline, .btnSolid {
+    min-height: 56px; /* Touch target minimum */
+    font-size: 1.0625rem;
+    padding: 1rem;
+    border-radius: var(--radius-full);
+  }
+
+  .btnOutline {
+    border-width: 1.5px; /* Thicker border for prominence on non-featured cards */
+  }
+}

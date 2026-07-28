@@ -214,3 +214,154 @@
   color: var(--color-text-secondary);
   margin-top: 0.25rem;
 }
+
+/* ─── DESKTOP/MOBILE VISIBILITY WRAPPERS ─── */
+.desktopWrapper {
+  display: block;
+}
+
+.mobileWrapper {
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .desktopWrapper {
+    display: none;
+  }
+  .mobileWrapper {
+    display: block;
+  }
+}
+
+/* ─── INDEPENDENT MOBILE HERO ─── */
+.mobileHeroSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #F8FAFC;
+  width: 100%;
+  padding: 16px 20px 0; /* 16px top spacing, 20px horiz margin */
+}
+
+.mobileHeroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  min-height: 420px;
+  max-height: 520px;
+  border-radius: 24px; /* Matches desktop imageFrame */
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.mobileHeroGradient {
+  position: absolute;
+  inset: 0;
+  /* Reduced opacity gradient to let image shine through */
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.25) 50%, rgba(15, 23, 42, 0) 100%);
+  z-index: 1;
+}
+
+.mobileHeroOverlayContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-24) var(--space-20) calc(var(--space-24) + 16px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.mobileHeadline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 8vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mobileHeadline em {
+  font-style: italic;
+  color: var(--color-brand-red-light);
+}
+
+.mobileHeroContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 var(--space-48);
+  gap: var(--space-24);
+  background-color: transparent;
+}
+
+.mobileActions {
+  width: 100%;
+  /* Pulls CTA up to overlap the image card */
+  margin-top: -24px;
+  z-index: 10;
+  position: relative;
+  padding: 0 8px; /* Small inset so button isn't exactly width of image */
+}
+
+.btnPrimaryMobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-brand-red);
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(185, 28, 28, 0.35);
+  transition: transform 200ms ease;
+}
+
+.btnPrimaryMobile:active {
+  transform: scale(0.98);
+}
+
+.mobileTrustScroll {
+  display: flex;
+  gap: var(--space-12);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-8); /* Room for scrollbar */
+  margin: 0 calc(var(--space-20) * -1); /* Full bleed scrolling */
+  padding: 0 var(--space-20); /* Inner padding matches section */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobileTrustScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileTrustPill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  background-color: #ffffff;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand-navy);
+  white-space: nowrap;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.mobileSub {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}

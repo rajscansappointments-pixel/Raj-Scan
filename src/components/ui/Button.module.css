@@ -85,3 +85,16 @@
   background-color: var(--color-neutral-100);
   color: var(--color-text-primary);
 }
+
+/* ─── MOBILE REDESIGN ─── */
+@media (max-width: 767px) {
+  .sm {
+    height: 40px; /* Minimum recommended touch target */
+  }
+  .md {
+    height: 48px;
+  }
+  .lg {
+    height: 56px;
+  }
+}

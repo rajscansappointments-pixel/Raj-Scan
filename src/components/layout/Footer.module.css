@@ -193,3 +193,65 @@
 .designed {
   color: var(--color-neutral-500);
 }
+
+/* ─── MOBILE REDESIGN (max-width: 767px) ─── */
+@media (max-width: 767px) {
+  .footer {
+    /* Clear the mobile bottom nav safely */
+    padding: 40px 0 104px; 
+  }
+
+  .grid {
+    gap: 32px;
+  }
+
+  .column {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 24px;
+    gap: 12px;
+  }
+
+  .column:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .title {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .linkList {
+    gap: 0px;
+  }
+
+  .link {
+    font-size: 1rem;
+    padding: 6px 0;
+    display: block;
+  }
+  
+  .contactBlock {
+    gap: 16px;
+  }
+
+  .contactGroup {
+    font-size: 1.0625rem;
+    gap: 2px;
+  }
+
+  .bottomBar {
+    border-top: none;
+    padding-top: 24px;
+    gap: 16px;
+  }
+
+  .legalLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}

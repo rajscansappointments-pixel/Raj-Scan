@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
@@ -75,6 +75,44 @@ const services = [
 export function ServicesPreview() {
   const [activeId, setActiveId] = useState(services[0].id);
   const activeService = services.find(s => s.id === activeId) || services[0];
+  const tabContainerRef = useRef<HTMLDivElement>(null);
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  // Sync tab scroll position when activeId changes (e.g. from swiping)
+  useEffect(() => {
+    if (window.innerWidth < 1024 && tabContainerRef.current) {
+      const index = services.findIndex(s => s.id === activeId);
+      const tabNode = tabContainerRef.current.children[index] as HTMLElement;
+      if (tabNode) {
+        tabNode.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [activeId]);
+
+  const handleTabClick = (id: string, index: number) => {
+    setActiveId(id);
+    if (window.innerWidth < 1024 && contentContainerRef.current) {
+      const width = contentContainerRef.current.clientWidth;
+      contentContainerRef.current.scrollTo({ left: width * index, behavior: 'smooth' });
+    }
+  };
+
+  const handleContentScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 1024) return;
+    
+    const wrapper = e.currentTarget;
+    const width = wrapper.clientWidth;
+    const scrollLeft = wrapper.scrollLeft;
+    
+    if (width > 0) {
+      const activeIndex = Math.round(scrollLeft / width);
+      const newActiveId = services[activeIndex]?.id;
+      
+      if (newActiveId && newActiveId !== activeId) {
+        setActiveId(newActiveId);
+      }
+    }
+  };
 
   return (
     <div className={styles.section}>
@@ -89,12 +127,13 @@ export function ServicesPreview() {
 
       <div className={styles.layout}>
         {/* Left: Interactive Grid */}
-        <div className={styles.grid}>
-          {services.map((s) => (
+        <div className={styles.grid} ref={tabContainerRef}>
+          {services.map((s, index) => (
             <div
               key={s.id}
               className={`${styles.card} ${activeId === s.id ? styles.active : ''}`}
               onMouseEnter={() => setActiveId(s.id)}
+              onClick={() => handleTabClick(s.id, index)}
             >
               <div className={styles.cardAccent} />
               <div className={styles.cardInner}>
@@ -107,7 +146,11 @@ export function ServicesPreview() {
         </div>
 
         {/* Right: Dynamic Featured Panel */}
-        <div className={styles.featuredWrapper}>
+        <div 
+          className={styles.featuredWrapper} 
+          ref={contentContainerRef}
+          onScroll={handleContentScroll}
+        >
           {/* Preload images to guarantee 0 network lag */}
           <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
             {services.map(s => (
@@ -118,18 +161,7 @@ export function ServicesPreview() {
           {services.map((service) => (
             <div
               key={service.id}
-              className={styles.featuredPanel}
-              style={{
-                position: activeService.id === service.id ? 'relative' : 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                opacity: activeService.id === service.id ? 1 : 0,
-                visibility: activeService.id === service.id ? 'visible' : 'hidden',
-                transition: 'opacity 0.2s ease, visibility 0.2s ease',
-                pointerEvents: activeService.id === service.id ? 'auto' : 'none',
-                zIndex: activeService.id === service.id ? 1 : 0,
-              }}
+              className={`${styles.featuredPanel} ${activeService.id === service.id ? styles.featuredPanelActive : ''}`}
             >
               <div className={styles.featuredImageWrap}>
                 <Image
@@ -155,9 +187,14 @@ export function ServicesPreview() {
                   ))}
                 </ul>
 
-                <Link href={service.href} className={styles.learnMoreBtn}>
-                  Learn More <ArrowRight size={16} strokeWidth={2.5} />
-                </Link>
+                <div className={styles.actions}>
+                  <Link href={service.href} className={styles.learnMoreBtn}>
+                    Learn More <ArrowRight size={16} strokeWidth={2.5} />
+                  </Link>
+                  <Link href={service.href} className={styles.bookBtn}>
+                    Book Now
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

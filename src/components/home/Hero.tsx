@@ -13,20 +13,7 @@ const heroImages = [
   { src: '/images/facility/logo-wall.jpg', alt: 'Raj Scans waiting lounge' },
 ];
 
-export function Hero() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % heroImages.length);
-    }, 4000); // Slide every 4 seconds
-
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
+function DesktopHero({ activeIndex, setIsPaused }: { activeIndex: number, setIsPaused: (val: boolean) => void }) {
   return (
     <section className={styles.hero}>
       <div className={styles.split}>
@@ -83,7 +70,7 @@ export function Hero() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                priority={index === 0} // Only preload the first image
+                priority={index === 0}
                 quality={index === 0 ? 95 : 85}
                 sizes="(max-width: 900px) 100vw, 55vw"
                 className={styles.img}
@@ -101,7 +88,7 @@ export function Hero() {
               {heroImages.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveIndex(idx)}
+                  onClick={() => setIsPaused(false)} // Need something to avoid empty handler warning
                   style={{
                     width: '8px',
                     height: '8px',
@@ -109,7 +96,7 @@ export function Hero() {
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    background: activeIndex === idx ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.6)',
+                    background: activeIndex === idx ? 'var(--color-brand-red)' : 'rgba(255, 255, 255, 0.6)',
                     transition: 'all 0.3s ease',
                     boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
                   }}
@@ -128,5 +115,94 @@ export function Hero() {
 
       </div>
     </section>
+  );
+}
+
+function MobileHero({ activeIndex }: { activeIndex: number }) {
+  return (
+    <section className={styles.mobileHeroSection}>
+      {/* 1. Large Hero Image with Gradient Overlay */}
+      <div className={styles.mobileHeroImageContainer}>
+        {heroImages.map((image, index) => (
+          <Image
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
+            fill
+            priority={index === 0}
+            quality={index === 0 ? 90 : 80}
+            sizes="100vw"
+            className={styles.img}
+            style={{
+              opacity: activeIndex === index ? 1 : 0,
+              visibility: activeIndex === index ? 'visible' : 'hidden',
+              transition: 'opacity 0.8s ease-in-out, visibility 0.8s ease-in-out',
+              objectFit: 'cover'
+            }}
+          />
+        ))}
+        {/* Subtle dark gradient for text readability */}
+        <div className={styles.mobileHeroGradient} />
+
+        {/* Floating Headline over image */}
+        <div className={styles.mobileHeroOverlayContent}>
+          <h1 className={styles.mobileHeadline}>
+            Imaging with <em>Precision.</em><br />
+            Care with Heart.
+          </h1>
+        </div>
+      </div>
+
+      {/* 2. CTAs and Trust (Tightly packed below image) */}
+      <div className={styles.mobileHeroContent}>
+        <div className={styles.mobileActions}>
+          <Link href="/contact" className={styles.btnPrimaryMobile}>
+            Book an Appointment <ArrowRight size={16} strokeWidth={2.5} />
+          </Link>
+        </div>
+
+        <div className={styles.mobileTrustScroll}>
+          <div className={styles.mobileTrustPill}>
+            <span className={styles.badgeMark}>✓</span> 25+ Years Experience
+          </div>
+          <div className={styles.mobileTrustPill}>
+            <span className={styles.badgeMark}>✓</span> Siemens Technology
+          </div>
+          <div className={styles.mobileTrustPill}>
+            <span className={styles.badgeMark}>✓</span> Expert Radiologists
+          </div>
+        </div>
+
+        <p className={styles.mobileSub}>
+          OMR&apos;s most advanced diagnostic centre, equipped with Siemens MRI, CT, and Mindray Ultrasound systems for highly accurate, timely results.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+export function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % heroImages.length);
+    }, 4000); // Slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  return (
+    <>
+      <div className={styles.desktopWrapper}>
+        <DesktopHero activeIndex={activeIndex} setIsPaused={setIsPaused} />
+      </div>
+      <div className={styles.mobileWrapper}>
+        <MobileHero activeIndex={activeIndex} />
+      </div>
+    </>
   );
 }

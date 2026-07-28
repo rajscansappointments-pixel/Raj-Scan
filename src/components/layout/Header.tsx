@@ -25,6 +25,17 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -112,33 +123,52 @@ export function Header() {
         </div>
       </Container>
 
-      {/* Mobile Nav Overlay */}
+      {/* Mobile Nav Drawer */}
       {isMobileMenuOpen && (
-        <div className={styles.mobileNavOverlay}>
-          <nav style={{ display: 'flex', flexDirection: 'column' }}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={styles.mobileNavLink}
-                onClick={closeMobileMenu}
-                data-active={pathname === link.href}
-              >
-                {link.label}
+        <>
+          <div className={styles.mobileNavBackdrop} onClick={closeMobileMenu} aria-hidden="true" />
+          <div className={styles.mobileNavDrawer}>
+            <div className={styles.drawerHeader}>
+              <Image
+                src="/images/raj-scans-logo.png"
+                alt="Raj Scans Logo"
+                width={90}
+                height={70}
+                style={{ objectFit: 'contain' }}
+              />
+              <button className={styles.drawerCloseBtn} onClick={closeMobileMenu} aria-label="Close menu">
+                <X size={24} />
+              </button>
+            </div>
+            
+            <nav style={{ display: 'flex', flexDirection: 'column', flex: 1, overflowY: 'auto' }}>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={styles.mobileNavLink}
+                  onClick={closeMobileMenu}
+                  data-active={pathname === link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            
+            <div className={styles.drawerCTAs}>
+              <Link href="tel:+914446435198" style={{ textDecoration: 'none', width: '100%' }}>
+                <Button variant="secondary" size="lg" style={{ width: '100%', minHeight: '56px', fontSize: '1.0625rem' }}>
+                  <Phone size={18} style={{ marginRight: '8px' }} /> Call Us Now
+                </Button>
               </Link>
-            ))}
-          </nav>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)', marginTop: 'var(--space-24)' }}>
-            <Link href="tel:+914446435198" style={{ textDecoration: 'none' }}>
-              <Button variant="secondary" size="lg" style={{ width: '100%' }}>
-                <Phone size={16} /> Call 044 - 4643 5198
-              </Button>
-            </Link>
-            <Link href="/packages" style={{ textDecoration: 'none' }}>
-              <Button variant="accent" size="lg" style={{ width: '100%' }}>Book Appointment</Button>
-            </Link>
+              <Link href="/packages" style={{ textDecoration: 'none', width: '100%' }}>
+                <Button variant="accent" size="lg" style={{ width: '100%', minHeight: '56px', fontSize: '1.0625rem' }}>
+                  Book Appointment
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

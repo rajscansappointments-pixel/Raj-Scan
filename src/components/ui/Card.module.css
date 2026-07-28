@@ -42,3 +42,28 @@
   display: flex;
   align-items: center;
 }
+
+/* ─── MOBILE REDESIGN ─── */
+@media (max-width: 767px) {
+  .card {
+    border-radius: var(--radius-lg);
+  }
+  
+  .card:hover {
+    /* Disable aggressive hover transform on mobile to prevent sticky states */
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header {
+    padding: var(--space-20);
+  }
+
+  .content {
+    padding: 0 var(--space-20) var(--space-20);
+  }
+
+  .footer {
+    padding: var(--space-16) var(--space-20);
+  }
+}

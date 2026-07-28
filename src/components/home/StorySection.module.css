@@ -178,18 +178,18 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 16px 24px;
+  gap: 12px 16px;
   text-align: center;
 }
 
 .trustItem {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .trustText {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-neutral-200);
   letter-spacing: 0.05em;
@@ -199,4 +199,28 @@
 .trustBullet {
   color: var(--color-accent-gold);
   font-size: 1.25rem;
+  line-height: 0;
+}
+
+@media (max-width: 767px) {
+  .trustStrip {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .trustBullet {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .trustStrip {
+    gap: 16px 24px;
+  }
+  .trustItem {
+    gap: 24px;
+  }
+  .trustText {
+    font-size: 0.875rem;
+  }
 }

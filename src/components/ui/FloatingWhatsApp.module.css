@@ -25,3 +25,10 @@
   width: 32px;
   height: 32px;
 }
+
+/* On mobile, bump it up to avoid the new Sticky Bottom CTA Bar */
+@media (max-width: 1023px) {
+  .widget {
+    bottom: calc(var(--space-24) + 104px + env(safe-area-inset-bottom, 0px));
+  }
+}
