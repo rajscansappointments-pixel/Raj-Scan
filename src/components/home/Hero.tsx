@@ -9,11 +9,11 @@ import styles from './Hero.module.css';
 const heroImages = [
   { src: '/images/facility/reception-lobby.png', alt: 'Premium diagnostic centre reception' },
   { src: '/images/facility/mri-scanner.jpg', alt: 'State-of-the-art MRI Scanner' },
-  { src: '/images/facility/exterior.jpg', alt: 'Raj Scans exterior view' },
+  { src: '/images/facility/exterior-updated.jpg', alt: 'Raj Scans exterior view' },
   { src: '/images/facility/logo-wall.jpg', alt: 'Raj Scans waiting lounge' },
 ];
 
-function DesktopHero({ activeIndex, setIsPaused }: { activeIndex: number, setIsPaused: (val: boolean) => void }) {
+function DesktopHero({ activeIndex, setIsPaused, setActiveIndex }: { activeIndex: number, setIsPaused: (val: boolean) => void, setActiveIndex: (val: number) => void }) {
   return (
     <section className={styles.hero}>
       <div className={styles.split}>
@@ -88,7 +88,7 @@ function DesktopHero({ activeIndex, setIsPaused }: { activeIndex: number, setIsP
               {heroImages.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setIsPaused(false)} // Need something to avoid empty handler warning
+                  onClick={() => setActiveIndex(idx)}
                   style={{
                     width: '8px',
                     height: '8px',
@@ -190,7 +190,7 @@ export function Hero() {
 
     const timer = setInterval(() => {
       setActiveIndex((current) => (current + 1) % heroImages.length);
-    }, 4000); // Slide every 4 seconds
+    }, 2500); // Slide every 2.5 seconds
 
     return () => clearInterval(timer);
   }, [isPaused]);
@@ -198,7 +198,7 @@ export function Hero() {
   return (
     <>
       <div className={styles.desktopWrapper}>
-        <DesktopHero activeIndex={activeIndex} setIsPaused={setIsPaused} />
+        <DesktopHero activeIndex={activeIndex} setIsPaused={setIsPaused} setActiveIndex={setActiveIndex} />
       </div>
       <div className={styles.mobileWrapper}>
         <MobileHero activeIndex={activeIndex} />
