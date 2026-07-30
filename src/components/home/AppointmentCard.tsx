@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { usePathname } from 'next/navigation';
-import { Phone, Clock, MapPin, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, Clock, MapPin, Shield, ChevronLeft, ChevronRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { submitAppointment, ActionState } from '@/app/actions';
 import styles from './AppointmentCard.module.css';
 import { cn } from '@/lib/utils';
 
@@ -54,8 +56,22 @@ const BRANCHES = [
   },
 ];
 
+const initialState: ActionState = {
+  success: false,
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" className={styles.submitBtn} disabled={pending}>
+      {pending ? 'Submitting...' : 'Book Appointment'}
+    </button>
+  );
+}
+
 export function AppointmentCard() {
   const pathname = usePathname();
+  const [state, formAction] = useActionState(submitAppointment, initialState);
   const [activeBranch, setActiveBranch] = useState(0);
   const [selectedService, setSelectedService] = useState("");
 
@@ -100,47 +116,75 @@ export function AppointmentCard() {
             Prefer to book online? Fill out the enquiry form and our front desk team will contact you shortly to confirm your appointment.
           </p>
 
-          <form className={styles.formGrid}>
-            <input type="text" placeholder="Full Name" className={styles.input} required />
-            <input type="tel" placeholder="Phone Number" className={styles.input} required />
+          <form action={formAction} className={styles.formGrid}>
             
-            <input type="email" placeholder="Email Address" className={styles.input} />
-            <input type="date" className={styles.input} required />
-            
-            <select 
-              className={styles.input} 
-              required 
-              value={selectedService}
-              onChange={(e) => setSelectedService(e.target.value)}
-            >
-              <option value="" disabled>Select Service</option>
-              <option value="mri">MRI</option>
-              <option value="ct">CT Scan</option>
-              <option value="ultrasound">Ultrasound</option>
-              <option value="xray">Digital X-Ray</option>
-              <option value="mammography">Digital Mammography</option>
-              <option value="laboratory">Laboratory</option>
-              <option value="echo-ecg">Echo ECG</option>
-              <option value="package">Health Package</option>
-            </select>
-            
-            <select className={styles.input} required defaultValue="">
-              <option value="" disabled>Preferred Time</option>
-              <option value="morning">Morning</option>
-              <option value="afternoon">Afternoon</option>
-              <option value="evening">Evening</option>
-            </select>
-            
-            <textarea 
-              placeholder="Message (Optional)" 
-              className={cn(styles.textarea, styles.fullWidth)} 
-            />
-            
-            <div className={styles.fullWidth}>
-              <button type="submit" className={styles.submitBtn}>
-                Book Appointment
-              </button>
-            </div>
+            {state.success && (
+              <div 
+                aria-live="polite" 
+                style={{ gridColumn: '1 / -1', padding: 'var(--space-16)', backgroundColor: 'var(--color-success-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-success)', display: 'flex', alignItems: 'flex-start', gap: 'var(--space-12)' }}
+              >
+                <CheckCircle2 color="var(--color-success)" style={{ flexShrink: 0 }} aria-hidden="true" />
+                <div>
+                  <h4 style={{ color: 'var(--color-success)', fontWeight: 600, marginBottom: 'var(--space-4)' }}>Request Received</h4>
+                  <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)' }}>{state.message}</p>
+                </div>
+              </div>
+            )}
+
+            {state.error && (
+              <div 
+                aria-live="assertive" 
+                role="alert"
+                style={{ gridColumn: '1 / -1', padding: 'var(--space-12)', backgroundColor: 'var(--color-error-bg)', color: 'var(--color-error)', borderRadius: 'var(--radius-md)', fontSize: 'var(--text-sm)', display: 'flex', alignItems: 'center', gap: 'var(--space-8)' }}
+              >
+                <AlertCircle size={16} aria-hidden="true" />
+                {state.error}
+              </div>
+            )}
+
+            {!state.success && (
+              <>
+                <input type="text" name="name" placeholder="Full Name" className={styles.input} required />
+                <input type="tel" name="phone" placeholder="Phone Number" className={styles.input} required />
+                
+                <select 
+                  name="location"
+                  className={styles.input} 
+                  required 
+                >
+                  <option value="" disabled selected>Preferred Location</option>
+                  <option value="OMR Branch">OMR Branch (Kottivakkam)</option>
+                  <option value="Main Branch">Main Branch</option>
+                </select>
+
+                <select 
+                  name="service"
+                  className={styles.input} 
+                  required 
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                >
+                  <option value="" disabled>Select Service</option>
+                  <option value="mri">MRI</option>
+                  <option value="ct">CT Scan</option>
+                  <option value="ultrasound">Ultrasound</option>
+                  <option value="xray">Digital X-Ray</option>
+                  <option value="mammography">Digital Mammography</option>
+                  <option value="laboratory">Laboratory</option>
+                  <option value="echo-ecg">Echo ECG</option>
+                  <option value="package">Health Package</option>
+                </select>
+                
+                <textarea 
+                  placeholder="Message (Optional)" 
+                  className={cn(styles.textarea, styles.fullWidth)} 
+                />
+                
+                <div className={styles.fullWidth}>
+                  <SubmitButton />
+                </div>
+              </>
+            )}
           </form>
         </div>
 

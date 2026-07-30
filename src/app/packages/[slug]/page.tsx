@@ -6,7 +6,6 @@ import { Section } from '@/components/layout/Section';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SectionTitle } from '@/components/shared/SectionTitle';
-import { AppointmentForm } from '@/components/forms/AppointmentForm';
 import { packagesData } from '@/data/packages';
 
 export function generateStaticParams() {
@@ -92,39 +91,6 @@ export default async function PackageDetailPage({ params }: { params: Promise<{ 
                   ))}
                 </ul>
               </div>
-            </div>
-
-            {/* Right: Booking Form */}
-            <div style={{
-              position: 'sticky',
-              top: '100px',
-              backgroundColor: 'var(--color-surface-card)',
-              borderRadius: 'var(--radius-xl)',
-              padding: 'var(--space-40)',
-              border: '1px solid var(--color-neutral-200)',
-              boxShadow: 'var(--shadow-lg)',
-            }}>
-              <div style={{ marginBottom: 'var(--space-4)' }}>
-                <span style={{
-                  display: 'inline-block',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-brand-red)',
-                  backgroundColor: 'rgba(185, 28, 28, 0.08)',
-                  padding: '0.3rem 0.8rem',
-                  borderRadius: '9999px',
-                }}>Book This Package</span>
-              </div>
-              <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-brand-navy)', fontSize: 'var(--text-2xl)', marginTop: 'var(--space-12)', marginBottom: 'var(--space-8)' }}>
-                {pkg.title}
-              </h2>
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>
-                Fill out the form below and our team will call you shortly to confirm your appointment.
-              </p>
-
-              <AppointmentForm defaultService="Health Package" packageName={pkg.title} />
             </div>
 
           </div>
