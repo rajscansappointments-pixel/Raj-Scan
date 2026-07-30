@@ -157,8 +157,9 @@ export function AppointmentCard() {
                   defaultValue=""
                 >
                   <option value="" disabled>Preferred Location</option>
-                  <option value="OMR Branch">OMR Branch (Kottivakkam)</option>
-                  <option value="Main Branch">Main Branch</option>
+                  {BRANCHES.map(b => (
+                    <option key={b.id} value={b.name}>{b.name}</option>
+                  ))}
                 </select>
 
                 <select 
