@@ -7,7 +7,8 @@ const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'rajscansappointments@gmail.c
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
   port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: process.env.SMTP_SECURE === 'true',
+  secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+  requireTLS: true, // Forces TLS encryption (STARTTLS) for all emails
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
