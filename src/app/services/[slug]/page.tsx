@@ -7,6 +7,7 @@ import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import { ServiceTimeline } from '@/components/services/ServiceTimeline';
 import { ServiceFAQ } from '@/components/services/ServiceFAQ';
+import { AppointmentForm } from '@/components/forms/AppointmentForm';
 import { servicesData } from '@/data/services';
 import { CheckCircle2, ShieldCheck } from 'lucide-react';
 
@@ -175,6 +176,44 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               <ServiceFAQ faqs={service.faqs} />
             </div>
 
+          </div>
+        </Container>
+      </Section>
+
+      {/* Book Appointment Section */}
+      <Section>
+        <Container>
+          <div style={{
+            maxWidth: '720px',
+            margin: '0 auto',
+            backgroundColor: 'var(--color-surface-card)',
+            border: '1px solid var(--color-neutral-200)',
+            borderRadius: 'var(--radius-xl)',
+            padding: 'var(--space-48)',
+            boxShadow: 'var(--shadow-lg)',
+          }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--color-brand-red)',
+              backgroundColor: 'rgba(185, 28, 28, 0.08)',
+              padding: '0.3rem 0.8rem',
+              borderRadius: '9999px',
+              marginBottom: 'var(--space-12)',
+            }}>Book an Appointment</span>
+            <h2 style={{
+              fontFamily: 'var(--font-serif)',
+              color: 'var(--color-brand-navy)',
+              fontSize: 'var(--text-3xl)',
+              marginBottom: 'var(--space-8)',
+            }}>Ready to Book Your {service.abbr}?</h2>
+            <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+              Fill in your details below and our team will call you to confirm your appointment at any of our branches.
+            </p>
+            <AppointmentForm defaultService={service.abbr} packageName={service.title} />
           </div>
         </Container>
       </Section>
