@@ -87,6 +87,10 @@ export async function submitContactForm(prevState: ActionState, formData: FormDa
 export async function submitAppointment(prevState: ActionState, formData: FormData): Promise<ActionState> {
   const name = formData.get('name') as string;
   const phone = formData.get('phone') as string;
+  const email = formData.get('email') as string;
+  const date = formData.get('date') as string;
+  const time = formData.get('time') as string;
+  const message = formData.get('message') as string;
   const service = formData.get('service') as string;
   const location = formData.get('location') as string;
   const packageName = formData.get('packageName') as string | null;
@@ -105,8 +109,12 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
       <p><strong>Package:</strong> ${packageName}</p>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
+      ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
       <p><strong>Location:</strong> ${location || 'Not specified'}</p>
       <p><strong>Service Category:</strong> ${service}</p>
+      <p><strong>Preferred Date:</strong> ${date || 'Not specified'}</p>
+      <p><strong>Preferred Time:</strong> ${time || 'Not specified'}</p>
+      ${message ? `<p><strong>Message:</strong><br/>${message}</p>` : ''}
       <hr/>
       <p style="color:#555;font-size:0.9em;">This booking was received from the Raj Scans website package page.</p>
     `
@@ -114,8 +122,12 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
       <h2>New Appointment Request</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
+      ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
       <p><strong>Location:</strong> ${location || 'Not specified'}</p>
       <p><strong>Service:</strong> ${service}</p>
+      <p><strong>Preferred Date:</strong> ${date || 'Not specified'}</p>
+      <p><strong>Preferred Time:</strong> ${time || 'Not specified'}</p>
+      ${message ? `<p><strong>Message:</strong><br/>${message}</p>` : ''}
     `;
 
   try {

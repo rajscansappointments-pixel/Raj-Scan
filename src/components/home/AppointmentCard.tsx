@@ -147,12 +147,16 @@ export function AppointmentCard() {
                 <input type="text" name="name" placeholder="Full Name" className={styles.input} required />
                 <input type="tel" name="phone" placeholder="Phone Number" className={styles.input} required />
                 
+                <input type="email" name="email" placeholder="Email Address" className={styles.input} />
+                <input type="date" name="date" className={styles.input} required />
+                
                 <select 
                   name="location"
                   className={styles.input} 
                   required 
+                  defaultValue=""
                 >
-                  <option value="" disabled selected>Preferred Location</option>
+                  <option value="" disabled>Preferred Location</option>
                   <option value="OMR Branch">OMR Branch (Kottivakkam)</option>
                   <option value="Main Branch">Main Branch</option>
                 </select>
@@ -175,7 +179,15 @@ export function AppointmentCard() {
                   <option value="package">Health Package</option>
                 </select>
                 
+                <select name="time" className={styles.input} required defaultValue="">
+                  <option value="" disabled>Preferred Time</option>
+                  <option value="morning">Morning</option>
+                  <option value="afternoon">Afternoon</option>
+                  <option value="evening">Evening</option>
+                </select>
+                
                 <textarea 
+                  name="message"
                   placeholder="Message (Optional)" 
                   className={cn(styles.textarea, styles.fullWidth)} 
                 />
