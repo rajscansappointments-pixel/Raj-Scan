@@ -88,10 +88,32 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
   const name = formData.get('name') as string;
   const phone = formData.get('phone') as string;
   const service = formData.get('service') as string;
+  const packageName = formData.get('packageName') as string | null;
 
   if (!name || !phone || !service) {
     return { success: false, error: 'All fields are required.' };
   }
+
+  const subject = packageName
+    ? `New Package Booking — ${packageName} | Raj Scans`
+    : 'New Appointment Request - Raj Scans';
+
+  const emailHtml = packageName
+    ? `
+      <h2 style="color:#1e3a5f;">New Health Package Booking</h2>
+      <p><strong>Package:</strong> ${packageName}</p>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Service Category:</strong> ${service}</p>
+      <hr/>
+      <p style="color:#555;font-size:0.9em;">This booking was received from the Raj Scans website package page.</p>
+    `
+    : `
+      <h2>New Appointment Request</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Service:</strong> ${service}</p>
+    `;
 
   try {
     const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
@@ -101,13 +123,8 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
       await transporter.sendMail({
         from: `"Raj Scans Website" <${smtpUser}>`,
         to: CONTACT_EMAIL,
-        subject: 'New Appointment Request - Raj Scans',
-        html: `
-          <h2>New Appointment Request</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Service:</strong> ${service}</p>
-        `,
+        subject,
+        html: emailHtml,
       });
     } else if (accessKey) {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -118,11 +135,11 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: 'New Appointment Request - Raj Scans',
+          subject,
           from_name: 'Raj Scans Website',
-          name: name,
-          phone: phone,
-          service: service,
+          name,
+          phone,
+          service: packageName ? `${packageName} (${service})` : service,
         })
       });
       
@@ -130,7 +147,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
         throw new Error('Failed to send email via Web3Forms');
       }
     } else {
-      console.log(`[SECURE SERVER LOG] Appointment Request from ${name} for ${service}`);
+      console.log(`[SECURE SERVER LOG] Appointment Request from ${name} for ${packageName || service}`);
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
@@ -140,6 +157,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
     return { success: false, error: 'Failed to submit appointment request.' };
   }
 }
+
 
 export async function submitCareerEnquiry(prevState: ActionState, formData: FormData): Promise<ActionState> {
   const name = formData.get('name') as string;

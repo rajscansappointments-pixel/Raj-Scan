@@ -27,7 +27,7 @@ function SubmitButton() {
   );
 }
 
-export function AppointmentForm({ defaultService = "" }: { defaultService?: string }) {
+export function AppointmentForm({ defaultService = "", packageName = "" }: { defaultService?: string; packageName?: string }) {
   const [state, formAction] = useActionState(submitAppointment, initialState);
 
   if (state.success) {
@@ -47,6 +47,9 @@ export function AppointmentForm({ defaultService = "" }: { defaultService?: stri
 
   return (
     <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', marginTop: 'var(--space-24)', textAlign: 'left' }}>
+      {/* Hidden fields to pass package context to the server action */}
+      {packageName && <input type="hidden" name="packageName" value={packageName} />}
+
       {state.error && (
         <div 
           aria-live="assertive" 
@@ -96,3 +99,4 @@ export function AppointmentForm({ defaultService = "" }: { defaultService?: stri
     </form>
   );
 }
+
