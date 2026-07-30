@@ -5,6 +5,8 @@ import { useFormStatus } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import { Phone, Clock, MapPin, Shield, ChevronLeft, ChevronRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { submitAppointment, ActionState } from '@/app/actions';
+import { packagesData } from '@/data/packages';
+import { Select } from '@/components/ui/Select';
 import styles from './AppointmentCard.module.css';
 import { cn } from '@/lib/utils';
 
@@ -74,12 +76,37 @@ export function AppointmentCard() {
   const [state, formAction] = useActionState(submitAppointment, initialState);
   const [activeBranch, setActiveBranch] = useState(0);
   const [selectedService, setSelectedService] = useState("");
+  const [selectedPackage, setSelectedPackage] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+
+  const locationOptions = BRANCHES.map(b => ({ label: b.name, value: b.name }));
+  
+  const serviceOptions = [
+    { label: 'MRI', value: 'mri' },
+    { label: 'CT Scan', value: 'ct' },
+    { label: 'Ultrasound', value: 'ultrasound' },
+    { label: 'Digital X-Ray', value: 'xray' },
+    { label: 'Digital Mammography', value: 'mammography' },
+    { label: 'Laboratory', value: 'laboratory' },
+    { label: 'Echo ECG', value: 'echo-ecg' },
+    { label: 'Health Package', value: 'package' },
+  ];
+
+  const packageOptions = packagesData.map(pkg => ({ label: pkg.title, value: pkg.title }));
+
+  const timeOptions = [
+    { label: 'Morning', value: 'morning' },
+    { label: 'Afternoon', value: 'afternoon' },
+    { label: 'Evening', value: 'evening' },
+  ];
 
   useEffect(() => {
     if (!pathname) return;
     
     const segments = pathname.split('/').filter(Boolean);
     const lastSegment = segments[segments.length - 1];
+    const isPackagePage = segments.includes('packages') || segments.includes('health-packages');
 
     const serviceMap: Record<string, string> = {
       'mri': 'mri',
@@ -89,11 +116,17 @@ export function AppointmentCard() {
       'mammography': 'mammography',
       'laboratory': 'laboratory',
       'echo-ecg': 'echo-ecg',
-      'health-packages': 'package',
-      'packages': 'package',
     };
 
-    if (lastSegment && serviceMap[lastSegment]) {
+    if (isPackagePage) {
+      setSelectedService('package');
+      if (lastSegment !== 'packages' && lastSegment !== 'health-packages') {
+        const pkg = packagesData.find(p => p.slug === lastSegment);
+        if (pkg) {
+          setSelectedPackage(pkg.title);
+        }
+      }
+    } else if (lastSegment && serviceMap[lastSegment]) {
       setSelectedService(serviceMap[lastSegment]);
     } else {
       // Reset if we navigate to a page that isn't tied to a specific service
@@ -150,42 +183,43 @@ export function AppointmentCard() {
                 <input type="email" name="email" placeholder="Email Address" className={styles.input} />
                 <input type="date" name="date" className={styles.input} required />
                 
-                <select 
+                <Select 
                   name="location"
-                  className={styles.input} 
-                  required 
-                  defaultValue=""
-                >
-                  <option value="" disabled>Preferred Location</option>
-                  {BRANCHES.map(b => (
-                    <option key={b.id} value={b.name}>{b.name}</option>
-                  ))}
-                </select>
+                  options={locationOptions}
+                  value={selectedLocation}
+                  onChange={setSelectedLocation}
+                  placeholder="Preferred Location"
+                  required
+                />
 
-                <select 
+                <Select 
                   name="service"
-                  className={styles.input} 
-                  required 
+                  options={serviceOptions}
                   value={selectedService}
-                  onChange={(e) => setSelectedService(e.target.value)}
-                >
-                  <option value="" disabled>Select Service</option>
-                  <option value="mri">MRI</option>
-                  <option value="ct">CT Scan</option>
-                  <option value="ultrasound">Ultrasound</option>
-                  <option value="xray">Digital X-Ray</option>
-                  <option value="mammography">Digital Mammography</option>
-                  <option value="laboratory">Laboratory</option>
-                  <option value="echo-ecg">Echo ECG</option>
-                  <option value="package">Health Package</option>
-                </select>
+                  onChange={setSelectedService}
+                  placeholder="Select Service"
+                  required
+                />
+
+                {selectedService === 'package' && (
+                  <Select 
+                    name="packageName"
+                    options={packageOptions}
+                    value={selectedPackage}
+                    onChange={setSelectedPackage}
+                    placeholder="Select Package"
+                    required
+                  />
+                )}
                 
-                <select name="time" className={styles.input} required defaultValue="">
-                  <option value="" disabled>Preferred Time</option>
-                  <option value="morning">Morning</option>
-                  <option value="afternoon">Afternoon</option>
-                  <option value="evening">Evening</option>
-                </select>
+                <Select 
+                  name="time"
+                  options={timeOptions}
+                  value={selectedTime}
+                  onChange={setSelectedTime}
+                  placeholder="Preferred Time"
+                  required
+                />
                 
                 <textarea 
                   name="message"
