@@ -88,6 +88,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
   const name = formData.get('name') as string;
   const phone = formData.get('phone') as string;
   const service = formData.get('service') as string;
+  const location = formData.get('location') as string;
   const packageName = formData.get('packageName') as string | null;
 
   if (!name || !phone || !service) {
@@ -95,8 +96,8 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
   }
 
   const subject = packageName
-    ? `New Package Booking — ${packageName} | Raj Scans`
-    : 'New Appointment Request - Raj Scans';
+    ? `New Package Booking — ${packageName} | Raj Scans (${location || 'No location'})`
+    : `New Appointment Request - Raj Scans (${location || 'No location'})`;
 
   const emailHtml = packageName
     ? `
@@ -104,6 +105,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
       <p><strong>Package:</strong> ${packageName}</p>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Location:</strong> ${location || 'Not specified'}</p>
       <p><strong>Service Category:</strong> ${service}</p>
       <hr/>
       <p style="color:#555;font-size:0.9em;">This booking was received from the Raj Scans website package page.</p>
@@ -112,6 +114,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
       <h2>New Appointment Request</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Location:</strong> ${location || 'Not specified'}</p>
       <p><strong>Service:</strong> ${service}</p>
     `;
 
@@ -139,7 +142,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
           from_name: 'Raj Scans Website',
           name,
           phone,
-          service: packageName ? `${packageName} (${service})` : service,
+          service: packageName ? `${packageName} (${service}) at ${location}` : `${service} at ${location}`,
         })
       });
       

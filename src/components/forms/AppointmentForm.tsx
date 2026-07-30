@@ -72,26 +72,24 @@ export function AppointmentForm({ defaultService = "", packageName = "" }: { def
         </div>
       </div>
       
+      {/* Hidden service field to preserve the context */}
+      <input type="hidden" name="service" value={defaultService || "General Inquiry"} />
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
-        <label htmlFor="service" style={{ fontSize: 'var(--text-sm)', fontWeight: 500 }}>Service Required *</label>
+        <label htmlFor="location" style={{ fontSize: 'var(--text-sm)', fontWeight: 500 }}>Preferred Location *</label>
         <select 
-          id="service"
-          name="service"
+          id="location"
+          name="location"
           required
-          defaultValue={defaultService}
           style={{ 
             width: '100%', padding: 'var(--space-12)', 
             borderRadius: 'var(--radius-md)', border: 'var(--border-width) solid var(--color-neutral-300)', 
             fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', backgroundColor: 'white'
           }} 
         >
-          <option value="">Select a service...</option>
-          <option value="MRI">MRI</option>
-          <option value="CT Scan">CT Scan</option>
-          <option value="Ultrasound">Ultrasound</option>
-          <option value="X-Ray">X-Ray</option>
-          <option value="Health Package">Health Package</option>
-          <option value="Other">Other / Not Sure</option>
+          <option value="">Select a branch...</option>
+          <option value="OMR Branch">OMR Branch (Kottivakkam)</option>
+          <option value="Main Branch">Main Branch</option>
         </select>
       </div>
       
