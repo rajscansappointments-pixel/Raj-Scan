@@ -46,7 +46,7 @@ export function Footer() {
               <li><Link href="/services/mri" className={styles.link}>MRI</Link></li>
               <li><Link href="/services/ct-scan" className={styles.link}>CT Scan</Link></li>
               <li><Link href="/services/ultrasound" className={styles.link}>Ultrasound</Link></li>
-              <li><Link href="/services/x-ray" className={styles.link}>Digital X-Ray</Link></li>
+              <li><Link href="/services/digital-xray" className={styles.link}>Digital X-Ray</Link></li>
               <li><Link href="/services/mammography" className={styles.link}>Digital Mammography</Link></li>
               <li><Link href="/services/laboratory" className={styles.link}>Laboratory</Link></li>
               <li><Link href="/services/echo-ecg" className={styles.link}>Echo ECG</Link></li>

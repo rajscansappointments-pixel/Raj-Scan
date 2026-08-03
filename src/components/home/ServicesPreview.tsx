@@ -41,7 +41,7 @@ const services = [
     body: 'The Digix ECO Plus features a fully motorised 3D ceiling stand, preview images in under 5 seconds, 1000+ APR programmes, wide dynamic range for soft tissues and hard bones, and high image contrast.',
     benefits: ['Preview image in under 5 seconds', '1000+ APR programmes', 'Wide dynamic range for all tissue types'],
     image: '/images/facility/digital-xray.jpg',
-    href: '/services/x-ray',
+    href: '/services/digital-xray',
   },
   {
     id: 'mammo',
