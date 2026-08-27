@@ -94,25 +94,25 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
   const message = formData.get('message') as string;
   const service = formData.get('service') as string;
   const location = formData.get('location') as string;
-  const packageName = formData.get('packageName') as string | null;
 
   if (!name || !phone || !service) {
     return { success: false, error: 'All fields are required.' };
   }
 
-  const subject = packageName
-    ? `New Package Booking — ${packageName} | Raj Scans (${location || 'No location'})`
+  const isPackage = service.includes('Health Check');
+
+  const subject = isPackage
+    ? `New Package Booking — ${service} | Raj Scans (${location || 'No location'})`
     : `New Appointment Request - Raj Scans (${location || 'No location'})`;
 
-  const emailHtml = packageName
+  const emailHtml = isPackage
     ? `
       <h2 style="color:#1e3a5f;">New Health Package Booking</h2>
-      <p><strong>Package:</strong> ${packageName}</p>
+      <p><strong>Package:</strong> ${service}</p>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
       ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
       <p><strong>Location:</strong> ${location || 'Not specified'}</p>
-      <p><strong>Service Category:</strong> ${service}</p>
       <p><strong>Preferred Date:</strong> ${date || 'Not specified'}</p>
       <p><strong>Preferred Time:</strong> ${time || 'Not specified'}</p>
       ${message ? `<p><strong>Message:</strong><br/>${message}</p>` : ''}
@@ -155,7 +155,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
           from_name: 'Raj Scans Website',
           name,
           phone,
-          service: packageName ? `${packageName} (${service}) at ${location}` : `${service} at ${location}`,
+          service: `${service} at ${location}`,
         })
       });
       
@@ -163,7 +163,7 @@ export async function submitAppointment(prevState: ActionState, formData: FormDa
         throw new Error('Failed to send email via Web3Forms');
       }
     } else {
-      console.log(`[SECURE SERVER LOG] Appointment Request from ${name} for ${packageName || service}`);
+      console.log(`[SECURE SERVER LOG] Appointment Request from ${name} for ${service}`);
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 

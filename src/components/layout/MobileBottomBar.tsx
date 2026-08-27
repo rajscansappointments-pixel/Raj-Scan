@@ -19,7 +19,7 @@ export function MobileBottomBar() {
         <MapPin size={20} />
         <span>Directions</span>
       </Link>
-      <Link href="/packages" className={`${styles.actionButton} ${styles.bookButton}`}>
+      <Link href="#book-appointment" className={`${styles.actionButton} ${styles.bookButton}`}>
         <Calendar size={20} />
         <span>Book</span>
       </Link>

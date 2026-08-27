@@ -7,7 +7,6 @@ import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import { packagesData } from '@/data/packages';
-import { AppointmentCard } from '@/components/home/AppointmentCard';
 
 export function generateStaticParams() {
   return packagesData.map((pkg) => ({ slug: pkg.slug }));
@@ -97,9 +96,6 @@ export default async function PackageDetailPage({ params }: { params: Promise<{ 
           </div>
         </Container>
       </Section>
-
-      {/* Appointment Booking Section */}
-      <AppointmentCard />
     </>
   );
 }

@@ -76,7 +76,6 @@ export function AppointmentCard() {
   const [state, formAction] = useActionState(submitAppointment, initialState);
   const [activeBranch, setActiveBranch] = useState(0);
   const [selectedService, setSelectedService] = useState("");
-  const [selectedPackage, setSelectedPackage] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
@@ -90,10 +89,8 @@ export function AppointmentCard() {
     { label: 'Digital Mammography', value: 'mammography' },
     { label: 'Laboratory', value: 'laboratory' },
     { label: 'Echo ECG', value: 'echo-ecg' },
-    { label: 'Health Package', value: 'package' },
+    ...packagesData.map(pkg => ({ label: pkg.title, value: pkg.title }))
   ];
-
-  const packageOptions = packagesData.map(pkg => ({ label: pkg.title, value: pkg.title }));
 
   const timeOptions = [
     { label: 'Morning', value: 'morning' },
@@ -119,11 +116,10 @@ export function AppointmentCard() {
     };
 
     if (isPackagePage) {
-      setSelectedService('package');
       if (lastSegment !== 'packages' && lastSegment !== 'health-packages') {
         const pkg = packagesData.find(p => p.slug === lastSegment);
         if (pkg) {
-          setSelectedPackage(pkg.title);
+          setSelectedService(pkg.title);
         }
       }
     } else if (lastSegment && serviceMap[lastSegment]) {
@@ -197,20 +193,9 @@ export function AppointmentCard() {
                   options={serviceOptions}
                   value={selectedService}
                   onChange={setSelectedService}
-                  placeholder="Select Service"
+                  placeholder="Select Service or Package"
                   required
                 />
-
-                {selectedService === 'package' && (
-                  <Select 
-                    name="packageName"
-                    options={packageOptions}
-                    value={selectedPackage}
-                    onChange={setSelectedPackage}
-                    placeholder="Select Package"
-                    required
-                  />
-                )}
                 
                 <Select 
                   name="time"

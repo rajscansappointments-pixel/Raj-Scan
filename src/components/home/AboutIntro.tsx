@@ -1,23 +1,72 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './AboutIntro.module.css';
 
+const aboutImages = [
+  { src: '/images/home/about-reception-v2.jpg', alt: 'Raj Scans — diagnostic centre reception, OMR Chennai' },
+  { src: '/images/home/about-awards-v3.jpg', alt: 'Raj Scans — awards and certifications' }
+];
+
 export function AboutIntro() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % aboutImages.length);
+    }, 3000); // Slide every 3 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className={styles.wrapper}>
 
-      {/* Image */}
+      {/* Image Slider */}
       <div className={styles.imageCol}>
         <div className={styles.imageFrame}>
-          <Image
-            src="/images/facility/logo-wall.jpg"
-            alt="Raj Scans — diagnostic centre reception, OMR Chennai"
-            fill
-            quality={90}
-            sizes="(max-width: 900px) 100vw, 48vw"
-            className={styles.img}
-          />
+
+          {aboutImages.map((image, index) => (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              fill
+              quality={90}
+              sizes="(max-width: 900px) 100vw, 48vw"
+              className={styles.img}
+              style={{
+                opacity: activeIndex === index ? 1 : 0,
+                visibility: activeIndex === index ? 'visible' : 'hidden',
+                transition: 'opacity 0.6s ease-in-out, visibility 0.6s ease-in-out'
+              }}
+            />
+          ))}
+
+          {/* Slider Indicators */}
+          <div style={{ position: 'absolute', bottom: '24px', left: '0', right: '0', display: 'flex', justifyContent: 'center', gap: '8px', zIndex: 10 }}>
+            {aboutImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  background: activeIndex === idx ? 'var(--color-brand-red)' : 'rgba(255, 255, 255, 0.6)',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
         <div className={styles.badge}>
           <span className={styles.badgeNum}>25<sup>+</sup></span>

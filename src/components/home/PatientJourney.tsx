@@ -130,7 +130,7 @@ export function PatientJourney() {
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <Link href="/packages" style={{ textDecoration: 'none' }}>
+          <Link href="#book-appointment" style={{ textDecoration: 'none' }}>
             <Button variant="accent" size="lg">
               Book Your Appointment <ArrowRight size={18} />
             </Button>

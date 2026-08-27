@@ -106,7 +106,7 @@ export function Header() {
               )}
             </div>
 
-            <Link href="/packages" style={{ textDecoration: 'none' }}>
+            <Link href="#book-appointment" style={{ textDecoration: 'none' }}>
               <Button variant="accent">Book Appointment</Button>
             </Link>
           </div>
@@ -161,8 +161,8 @@ export function Header() {
                   <Phone size={18} style={{ marginRight: '8px' }} /> Call Us Now
                 </Button>
               </Link>
-              <Link href="/packages" style={{ textDecoration: 'none', width: '100%' }}>
-                <Button variant="accent" size="lg" style={{ width: '100%', minHeight: '56px', fontSize: '1.0625rem' }}>
+              <Link href="#book-appointment" style={{ textDecoration: 'none', width: '100%' }}>
+                <Button variant="accent" size="lg" style={{ width: '100%', minHeight: '56px', fontSize: '1.0625rem' }} onClick={() => setIsMobileMenuOpen(false)}>
                   Book Appointment
                 </Button>
               </Link>

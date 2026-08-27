@@ -7,10 +7,10 @@ import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
 
 const heroImages = [
-  { src: '/images/facility/reception-lobby.png', alt: 'Premium diagnostic centre reception' },
-  { src: '/images/facility/mri-scanner.jpg', alt: 'State-of-the-art MRI Scanner' },
-  { src: '/images/facility/exterior-updated.jpg', alt: 'Raj Scans exterior view' },
-  { src: '/images/facility/logo-wall.jpg', alt: 'Raj Scans waiting lounge' },
+  { src: '/images/home/hero-mri.jpg', alt: 'State-of-the-art MRI Scanner' },
+  { src: '/images/home/hero-reception.jpg', alt: 'Premium diagnostic centre reception' },
+  { src: '/images/home/hero-exterior.jpg', alt: 'Raj Scans exterior view' },
+  { src: '/images/home/hero-waiting.jpg', alt: 'Raj Scans waiting lounge' },
 ];
 
 function DesktopHero({ activeIndex, setIsPaused, setActiveIndex }: { activeIndex: number, setIsPaused: (val: boolean) => void, setActiveIndex: (val: number) => void }) {
@@ -33,7 +33,7 @@ function DesktopHero({ activeIndex, setIsPaused, setActiveIndex }: { activeIndex
           </p>
 
           <div className={styles.actions}>
-            <Link href="/contact" className={styles.btnPrimary}>
+            <Link href="#book-appointment" className={styles.btnPrimary}>
               Book an Appointment
               <ArrowRight size={16} strokeWidth={2.5} />
             </Link>
@@ -156,7 +156,7 @@ function MobileHero({ activeIndex }: { activeIndex: number }) {
       {/* 2. CTAs and Trust (Tightly packed below image) */}
       <div className={styles.mobileHeroContent}>
         <div className={styles.mobileActions}>
-          <Link href="/contact" className={styles.btnPrimaryMobile}>
+          <Link href="#book-appointment" className={styles.btnPrimaryMobile}>
             Book an Appointment <ArrowRight size={16} strokeWidth={2.5} />
           </Link>
         </div>

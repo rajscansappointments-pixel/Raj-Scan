@@ -23,7 +23,7 @@ export const packagesData: PackageData[] = [
   },
   {
     slug: 'comprehensive',
-    title: 'Comprehensive',
+    title: 'Comprehensive Health Check',
     description: 'Thorough evaluation for a complete health overview.',
     price: '5,999',
     tests: [
@@ -37,7 +37,7 @@ export const packagesData: PackageData[] = [
   },
   {
     slug: 'senior-citizen',
-    title: 'Senior Citizen',
+    title: 'Senior Citizen Health Check',
     description: 'Tailored specifically for the health needs of the elderly.',
     price: '4,499',
     tests: [
