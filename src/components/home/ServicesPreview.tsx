@@ -58,7 +58,9 @@ const services = [
     title: 'Laboratory Services',
     body: 'Our laboratory is powered by the EKON Whole Slide Image Scanner with auto chemistry analysis, Chroma II reader, electrolyte analyser, centrifuge, urine analyser, and microscope for comprehensive diagnostics.',
     benefits: ['EKON Whole Slide Image Scanner', 'Automated digital scanning', 'Advanced AI tools for analysis'],
-    image: '/images/facility/laboratory.jpg',
+    image: '/images/facility/laboratory.png?v=3',
+    imageFit: 'cover',
+    unoptimized: true,
     href: '/services/laboratory',
   },
   {
@@ -67,7 +69,8 @@ const services = [
     title: 'Echo & ECG',
     body: 'Cardiac imaging and electrocardiography services for a thorough assessment of heart function and cardiovascular health, performed with care by our experienced clinical team.',
     benefits: ['Cardiac function assessment', 'Electrocardiography (ECG)', 'Dedicated care for all age groups'],
-    image: '/images/facility/echo-ecg.jpg',
+    image: '/images/facility/echo-ecg.png',
+    imagePosition: 'right center',
     href: '/services/echo-ecg',
   },
 ];
@@ -169,6 +172,11 @@ export function ServicesPreview() {
                   alt={service.title}
                   fill
                   className={styles.featuredImage}
+                  style={{
+                    objectPosition: service.imagePosition || 'center',
+                    objectFit: (service as any).imageFit || 'cover'
+                  }}
+                  unoptimized={(service as any).unoptimized}
                   priority
                 />
                 <div className={styles.imageOverlay} />

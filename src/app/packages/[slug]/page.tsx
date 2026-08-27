@@ -61,6 +61,21 @@ export default async function PackageDetailPage({ params }: { params: Promise<{ 
                 padding: 'var(--space-32)',
                 border: '1px solid var(--color-neutral-200)',
               }}>
+                {(pkg.price || pkg.parametersCount) && (
+                  <div style={{ display: 'flex', gap: '1rem', marginBottom: 'var(--space-20)', flexWrap: 'wrap' }}>
+                    {pkg.price && (
+                      <div style={{ background: 'var(--color-brand-red)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontWeight: 600, fontSize: '0.875rem' }}>
+                        ₹{pkg.price.toLocaleString('en-IN')}
+                      </div>
+                    )}
+                    {pkg.parametersCount && (
+                      <div style={{ background: 'var(--color-brand-navy)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontWeight: 600, fontSize: '0.875rem' }}>
+                        {pkg.parametersCount} Parameters
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <h3 style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-brand-navy)', fontSize: 'var(--text-xl)', marginBottom: 'var(--space-20)' }}>
                   Tests & Procedures
                 </h3>

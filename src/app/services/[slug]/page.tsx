@@ -138,7 +138,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                   src={service.image} 
                   alt={service.title}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ 
+                    objectFit: service.imageFit || 'cover', 
+                    objectPosition: service.imagePosition || 'center' 
+                  }}
+                  unoptimized={service.unoptimized}
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>

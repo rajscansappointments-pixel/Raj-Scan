@@ -9,7 +9,7 @@ import styles from './Hero.module.css';
 const heroImages = [
   { src: '/images/home/hero-mri.jpg', alt: 'State-of-the-art MRI Scanner' },
   { src: '/images/home/hero-reception.jpg', alt: 'Premium diagnostic centre reception' },
-  { src: '/images/home/hero-exterior.jpg', alt: 'Raj Scans exterior view' },
+  { src: '/images/home/hero-exterior.jpg?v=2', alt: 'Raj Scans exterior view' },
   { src: '/images/home/hero-waiting.jpg', alt: 'Raj Scans waiting lounge' },
 ];
 

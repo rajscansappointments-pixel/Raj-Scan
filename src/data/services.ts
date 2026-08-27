@@ -14,8 +14,10 @@ export interface ServiceData {
   benefits: string[];
   scans: string[];
   preparation: string[];
-  timeline: { step: string; desc: string }[];
   faqs: { q: string; a: string }[];
+  imagePosition?: string;
+  imageFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  unoptimized?: boolean;
 }
 
 export const servicesData: ServiceData[] = [
@@ -221,7 +223,9 @@ export const servicesData: ServiceData[] = [
     overview: 'Our laboratory is equipped with state-of-the-art analyzers to process a wide spectrum of blood, urine, and tissue tests accurately and swiftly. With advanced digital scanning and automated chemistry analysis, we provide your physician with the precise data needed for accurate diagnoses and treatment plans.',
     equipment: 'Advanced Pathology Suite',
     equipmentDesc: 'Features EKON Whole Slide Image Scanner, Auto Chemistry analysis, Chroma II reader, Electrolyte Analyser, and automated Urine Analyser.',
-    image: '/images/facility/laboratory.jpg',
+    image: '/images/facility/laboratory.png?v=3',
+    imageFit: 'cover',
+    unoptimized: true,
     benefits: [
       'EKON Whole Slide Image Scanner for digital pathology',
       'Automated chemistry and electrolyte analysis',
@@ -259,7 +263,8 @@ export const servicesData: ServiceData[] = [
     overview: 'Electrocardiogram (ECG) and Echocardiogram (Echo) are fundamental tests for assessing cardiovascular health. While an ECG records the electrical activity of your heart to detect arrhythmias, an Echo uses sound waves to create moving pictures of your heart, allowing our cardiologists to evaluate the valves, chambers, and overall pumping function.',
     equipment: 'Cardiology Suite',
     equipmentDesc: 'High-fidelity ECG machines and dedicated cardiac ultrasound probes for structural evaluation.',
-    image: '/images/facility/echo-ecg.jpg',
+    image: '/images/facility/echo-ecg.png',
+    imagePosition: 'right center',
     benefits: [
       'Painless, non-invasive cardiac evaluation',
       'Immediate detection of rhythm abnormalities',

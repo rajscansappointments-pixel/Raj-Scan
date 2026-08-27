@@ -4,23 +4,7 @@ import { SectionTitle } from '@/components/shared/SectionTitle';
 import { Button } from '@/components/ui/Button';
 import styles from './CampaignPackages.module.css';
 
-const packages = [
-  {
-    title: "Basic Health Checkup",
-    tests: "60+ Tests",
-    description: "Complete Blood Count | Liver Function Test | Kidney Function Test | Lipid Profile | Thyroid Profile | Blood Sugar Fasting",
-  },
-  {
-    title: "Comprehensive Health Checkup",
-    tests: "80+ Tests",
-    description: "Everything in Basic | Vitamin D | Vitamin B12 | Iron Profile | HbA1c (Diabetes) | Urine Routine",
-  },
-  {
-    title: "Executive Master Health Checkup",
-    tests: "90+ Tests",
-    description: "Everything in Comprehensive | Cardiac Risk Markers | Testosterone | Pancreatic Profile | Advanced Lipid",
-  },
-];
+import { packagesData } from '@/data/packages';
 
 export function CampaignPackages() {
   return (
@@ -37,13 +21,13 @@ export function CampaignPackages() {
         />
 
         <div className={styles.grid}>
-          {packages.map((pkg, i) => (
+          {packagesData.map((pkg, i) => (
             <div key={i} className={styles.packageCard}>
               <div className={styles.packageHeader}>
-                <span className={styles.testCount}>{pkg.tests}</span>
+                {pkg.parametersCount && <span className={styles.testCount}>{pkg.parametersCount} Parameters</span>}
                 <h3 className={styles.packageTitle}>{pkg.title}</h3>
                 <p className={styles.packageTests}>
-                  {pkg.description.split(' | ').map((test, index, array) => (
+                  {pkg.tests.map((test, index, array) => (
                     <span key={index} style={{ color: 'var(--color-text-secondary)', margin: 0 }}>
                       {test}
                       {index < array.length - 1 && <span style={{ color: 'var(--color-neutral-300)', margin: '0 6px' }}>•</span>}
@@ -74,6 +58,11 @@ export function CampaignPackages() {
               </div>
 
               <div className={styles.packageFooter}>
+                {pkg.price && (
+                  <div style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-brand-navy)' }}>
+                    ₹{pkg.price.toLocaleString('en-IN')}
+                  </div>
+                )}
                 <Button variant="primary" style={{ width: '100%' }}>Book This Package</Button>
               </div>
             </div>

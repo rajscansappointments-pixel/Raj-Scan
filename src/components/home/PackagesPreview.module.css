@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-48);
+  overflow: visible;
 }
 
 .header {
@@ -37,32 +38,40 @@
 
 /* ── Grid ── */
 .grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
   gap: var(--space-24);
-  align-items: center;
+  padding-top: 2.5rem;    /* ← room for the absolute badge */
+  padding-bottom: var(--space-32);
+  align-items: stretch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-@media (min-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.grid::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
   position: relative;
   background: var(--color-surface-card);
-  border: 1px solid var(--color-neutral-200);
-  border-radius: 20px;
-  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--color-neutral-100);
+  border-radius: 24px;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
 }
 
 .featured {
@@ -89,17 +98,19 @@
 
 .featuredBadge {
   position: absolute;
-  top: -12px;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-accent-gold);
   color: var(--color-brand-navy);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 1rem;
-  border-radius: 20px;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 1.25rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .cardHeader {
