@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!pkg) return { title: 'Package Not Found' };
   return {
     title: `${pkg.title} Health Package | Raj Scans`,
-    description: `${pkg.description} Book the ${pkg.title} package at Raj Scans starting at ₹${pkg.price}.`,
+    description: `${pkg.description} Book the ${pkg.title} package at Raj Scans.`,
   };
 }
 
@@ -53,24 +53,6 @@ export default async function PackageDetailPage({ params }: { params: Promise<{ 
             {/* Left: Package Details */}
             <div>
               <SectionTitle title="What's Included" description="Everything covered in this health package." />
-
-              {/* Price Card */}
-              <div style={{
-                backgroundColor: 'var(--color-brand-navy)',
-                borderRadius: 'var(--radius-xl)',
-                padding: 'var(--space-32)',
-                marginBottom: 'var(--space-32)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--space-4)',
-              }}>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'var(--text-sm)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Package Price</p>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', fontWeight: 600 }}>₹</span>
-                  <span style={{ color: '#fff', fontFamily: 'var(--font-serif)', fontSize: '3.5rem', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.04em' }}>{pkg.price}</span>
-                </div>
-                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 'var(--text-sm)', marginTop: 'var(--space-4)' }}>All-inclusive. No hidden charges.</p>
-              </div>
 
               {/* Tests list */}
               <div style={{

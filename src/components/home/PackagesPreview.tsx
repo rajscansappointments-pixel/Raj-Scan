@@ -18,11 +18,7 @@ export function PackagesPreview() {
               <h3 className={styles.cardTitle}>{pkg.title}</h3>
               <p className={styles.cardDesc}>{pkg.description}</p>
             </div>
-            
-            <div className={styles.priceWrap}>
-              <span className={styles.currency}>₹</span>
-              <span className={styles.price}>{pkg.price}</span>
-            </div>
+
 
             <ul className={styles.testList}>
               {pkg.tests.map((test, i) => (

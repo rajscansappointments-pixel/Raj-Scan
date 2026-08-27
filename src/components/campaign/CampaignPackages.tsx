@@ -9,22 +9,16 @@ const packages = [
     title: "Basic Health Checkup",
     tests: "60+ Tests",
     description: "Complete Blood Count | Liver Function Test | Kidney Function Test | Lipid Profile | Thyroid Profile | Blood Sugar Fasting",
-    mrp: "₹2,500",
-    offer: "₹999",
   },
   {
     title: "Comprehensive Health Checkup",
     tests: "80+ Tests",
     description: "Everything in Basic | Vitamin D | Vitamin B12 | Iron Profile | HbA1c (Diabetes) | Urine Routine",
-    mrp: "₹4,500",
-    offer: "₹1,499",
   },
   {
     title: "Executive Master Health Checkup",
     tests: "90+ Tests",
     description: "Everything in Comprehensive | Cardiac Risk Markers | Testosterone | Pancreatic Profile | Advanced Lipid",
-    mrp: "₹6,500",
-    offer: "₹2,499",
   },
 ];
 
@@ -80,16 +74,6 @@ export function CampaignPackages() {
               </div>
 
               <div className={styles.packageFooter}>
-                <div className={styles.priceBlock}>
-                  <div className={styles.offerPrice}>
-                    <span className={styles.offerLabel}>Offer Price</span>
-                    <span className={styles.priceValue}>{pkg.offer}</span>
-                  </div>
-                  <div className={styles.mrpPrice}>
-                    <span className={styles.mrpLabel}>MRP</span>
-                    <span className={styles.mrpValue}>{pkg.mrp}</span>
-                  </div>
-                </div>
                 <Button variant="primary" style={{ width: '100%' }}>Book This Package</Button>
               </div>
             </div>

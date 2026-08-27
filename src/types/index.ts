@@ -12,8 +12,6 @@ export interface PackageType {
   id: string;
   title: string;
   description: string;
-  price: number;
-  discountPrice?: number;
   testsIncluded: string[];
 }
 
