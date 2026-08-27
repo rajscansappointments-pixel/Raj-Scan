@@ -14,6 +14,7 @@ export interface ServiceData {
   benefits: string[];
   scans: string[];
   preparation: string[];
+  timeline: { step: string; desc: string }[];
   faqs: { q: string; a: string }[];
   imagePosition?: string;
   imageFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';

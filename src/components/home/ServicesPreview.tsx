@@ -6,7 +6,20 @@ import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './ServicesPreview.module.css';
 
-const services = [
+interface PreviewService {
+  id: string;
+  abbr: string;
+  title: string;
+  body: string;
+  benefits: string[];
+  image: string;
+  href: string;
+  imageFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  imagePosition?: string;
+  unoptimized?: boolean;
+}
+
+const services: PreviewService[] = [
   {
     id: 'mri',
     abbr: 'MRI',
@@ -174,9 +187,9 @@ export function ServicesPreview() {
                   className={styles.featuredImage}
                   style={{
                     objectPosition: service.imagePosition || 'center',
-                    objectFit: (service as any).imageFit || 'cover'
+                    objectFit: service.imageFit || 'cover'
                   }}
-                  unoptimized={(service as any).unoptimized}
+                  unoptimized={service.unoptimized}
                   priority
                 />
                 <div className={styles.imageOverlay} />
