@@ -96,7 +96,7 @@ export function Footer() {
 
           </div>
           <div>&copy; {new Date().getFullYear()} Raj Scans</div>
-          <div className={styles.designed}>Designed with care.</div>
+          <div className={styles.designed}>Designed &amp; Developed by <a href="https://www.smatalsoftwaresolutions.com/" target="_blank" rel="noopener noreferrer" className={styles.smatalLink}>Smatal Software Solutions</a></div>
         </div>
 
       </div>
