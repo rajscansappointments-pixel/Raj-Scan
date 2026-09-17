@@ -129,7 +129,7 @@ export default function ContactPage() {
                   <div style={iconBoxStyle}><Clock size={18} /></div>
                   <div>
                     <p style={labelStyle}>Hours</p>
-                    <p style={valueStyle}>Mon &ndash; Sat: 8:00 AM &ndash; 8:00 PM<br/>Sun: 8:00 AM &ndash; 1:00 PM</p>
+                    <p style={valueStyle}>24 x 7 (Mon &ndash; Sun)</p>
                   </div>
                 </div>
 

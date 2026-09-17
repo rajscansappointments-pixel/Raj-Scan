@@ -15,11 +15,16 @@
 }
 
 .eyebrow {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-brand-red);
+  background: rgba(220, 38, 38, 0.08);
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
 }
 
 .title {
@@ -39,20 +44,26 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-8);
 }
 
 .item {
-  background: var(--color-surface-card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-neutral-200);
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   overflow: hidden;
-  transition: border-color 250ms ease, box-shadow 250ms ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  transition: border-color 250ms ease, box-shadow 250ms ease, transform 200ms ease;
+}
+
+.item:hover {
+  border-color: rgba(220, 38, 38, 0.2);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
 }
 
 .itemOpen {
-  border-color: rgba(185, 28, 28, 0.25);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(220, 38, 38, 0.35);
+  box-shadow: 0 10px 30px -4px rgba(220, 38, 38, 0.1), 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .question {

@@ -16,7 +16,7 @@ const BRANCHES = [
     name: 'Chennai (OMR)',
     phone: '+91 99444 98000',
     tel: '+919944498000',
-    hours: '7:00 AM – 10:00 PM',
+    hours: '24 x 7',
     address: (
       <>
         Raj Scans OMR<br />

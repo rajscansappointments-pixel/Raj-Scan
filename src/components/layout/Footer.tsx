@@ -82,7 +82,7 @@ export function Footer() {
               <div className={styles.contactGroup}>
                 <span className={styles.contactLabel}>Working Hours</span>
                 <span>Mon–Sun</span>
-                <span>7:00 AM – 10:00 PM</span>
+                <span>24 x 7</span>
               </div>
 
             </div>

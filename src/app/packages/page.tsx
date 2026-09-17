@@ -13,7 +13,7 @@ export default function PackagesPage() {
   return (
     <>
 
-      <Section>
+      <Section id="packages">
         <Container>
           <PackagesPreview />
         </Container>
