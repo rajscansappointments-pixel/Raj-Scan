@@ -12,10 +12,7 @@
 }
 
 .subtitle {
-  background: var(--gradient-gold-shimmer);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-gold-dark);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: var(--text-sm);
@@ -30,7 +27,6 @@
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(11, 19, 43, 0.05);
 }
 
 .description {
