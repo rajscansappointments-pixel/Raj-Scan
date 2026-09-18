@@ -71,7 +71,7 @@ const services: PreviewService[] = [
     title: 'Laboratory Services',
     body: 'Our laboratory is powered by the EKON Whole Slide Image Scanner with auto chemistry analysis, Chroma II reader, electrolyte analyser, centrifuge, urine analyser, and microscope for comprehensive diagnostics.',
     benefits: ['EKON Whole Slide Image Scanner', 'Automated digital scanning', 'Advanced AI tools for analysis'],
-    image: '/images/facility/laboratory.png?v=3',
+    image: '/images/facility/laboratory.png',
     imageFit: 'cover',
     unoptimized: true,
     href: '/services/laboratory',

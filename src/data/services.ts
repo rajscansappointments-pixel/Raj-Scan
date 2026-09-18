@@ -224,7 +224,7 @@ export const servicesData: ServiceData[] = [
     overview: 'Our laboratory is equipped with state-of-the-art analyzers to process a wide spectrum of blood, urine, and tissue tests accurately and swiftly. With advanced digital scanning and automated chemistry analysis, we provide your physician with the precise data needed for accurate diagnoses and treatment plans.',
     equipment: 'Advanced Pathology Suite',
     equipmentDesc: 'Features EKON Whole Slide Image Scanner, Auto Chemistry analysis, Chroma II reader, Electrolyte Analyser, and automated Urine Analyser.',
-    image: '/images/facility/laboratory.png?v=3',
+    image: '/images/facility/laboratory.png',
     imageFit: 'cover',
     unoptimized: true,
     benefits: [
