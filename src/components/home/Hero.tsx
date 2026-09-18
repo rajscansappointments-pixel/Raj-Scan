@@ -24,7 +24,7 @@ function DesktopHero({ activeIndex, setIsPaused, setActiveIndex }: { activeIndex
 
           <h1 className={styles.heading}>
             Imaging with<br />
-            <em className={styles.italic}>Precision.</em><br />
+            <span className={styles.italic}>Precision.</span><br />
             Care with<br />Heart.
           </h1>
 
@@ -147,7 +147,7 @@ function MobileHero({ activeIndex }: { activeIndex: number }) {
         {/* Floating Headline over image */}
         <div className={styles.mobileHeroOverlayContent}>
           <h1 className={styles.mobileHeadline}>
-            Imaging with <em>Precision.</em><br />
+            Imaging with <span>Precision.</span><br />
             Care with Heart.
           </h1>
         </div>

@@ -73,7 +73,7 @@
 }
 
 .italic {
-  font-style: italic;
+  font-style: normal;
   background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -304,7 +304,7 @@
 }
 
 .mobileHeadline em {
-  font-style: italic;
+  font-style: normal;
   color: var(--color-accent-gold-light);
 }
 
