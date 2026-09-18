@@ -58,7 +58,7 @@
 }
 
 .heading {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: clamp(1.75rem, 4vw, 52px);
   font-weight: 700;
   color: #0F172A;
@@ -203,7 +203,7 @@ select.input {
 }
 
 .branchName {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);

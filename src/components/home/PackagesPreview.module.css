@@ -201,7 +201,9 @@
 }
 
 .price {
-  font-family: var(--font-serif);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
   font-size: clamp(1.6rem, 1.85vw, 2.1rem);
   font-weight: 700;
   line-height: 1;

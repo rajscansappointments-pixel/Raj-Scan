@@ -10,7 +10,7 @@ html, body {
   min-height: 100vh;
   background-color: var(--color-brand-bg, #F8FAFC);
   color: var(--color-text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   line-height: 1.65;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
@@ -19,9 +19,23 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
   font-weight: 700;
   color: var(--color-brand-navy);
+}
+
+.font-heading {
+  font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
+}
+
+.font-sans,
+.font-body {
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
 }
 
 a {

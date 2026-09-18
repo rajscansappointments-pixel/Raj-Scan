@@ -124,7 +124,9 @@
 }
 
 .number {
-  font-family: var(--font-serif);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
   font-size: clamp(2rem, 2.75vw, 2.625rem);
   font-weight: 700;
   color: var(--color-brand-navy);

@@ -104,6 +104,9 @@
 
 /* Price display — clean final price only, no MRP/strikethrough */
 .priceValue {
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
   font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--color-brand-navy);

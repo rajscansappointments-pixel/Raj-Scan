@@ -44,7 +44,7 @@
 }
 
 .heading {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
@@ -139,7 +139,8 @@
 }
 
 .featureNum {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
+  font-variant-numeric: tabular-nums;
   font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, #FEF08A 0%, #F59E0B 100%);

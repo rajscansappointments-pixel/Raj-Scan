@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, DM_Serif_Display } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import dynamic from 'next/dynamic';
 
@@ -9,16 +9,17 @@ const FloatingWhatsApp = dynamic(() => import('@/components/ui/FloatingWhatsApp'
 const MobileBottomBar = dynamic(() => import('@/components/layout/MobileBottomBar').then((mod) => mod.MobileBottomBar));
 import '@/styles/globals.css';
 
-const inter = Inter({
+const headingFont = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['600', '700', '800'],
+  variable: '--font-heading',
   display: 'swap',
 });
 
-const playfair = DM_Serif_Display({
-  weight: '400',
+const bodyFont = Inter({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  weight: ['400', '500', '600'],
+  variable: '--font-body',
   display: 'swap',
 });
 
@@ -150,7 +151,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
