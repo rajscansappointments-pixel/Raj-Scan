@@ -3,9 +3,9 @@
   padding-bottom: var(--space-64);
 }
 
-/* Alternate sections get clean crisp luminous surface */
+/* Alternate sections get warm subtle rose tint surface */
 .section.alternate {
-  background-color: #F8FAFD;
+  background-color: var(--color-surface-rose, #FFFBFB);
   position: relative;
 }
 

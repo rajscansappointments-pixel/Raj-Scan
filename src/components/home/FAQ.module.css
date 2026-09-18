@@ -25,6 +25,7 @@
   padding: 0.35rem 0.9rem;
   border-radius: 9999px;
   border: 1px solid rgba(220, 38, 38, 0.2);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.06);
 }
 
 .title {
@@ -50,9 +51,9 @@
 .item {
   background: #ffffff;
   border-radius: 18px;
-  border: 1.5px solid rgba(226, 232, 240, 0.95);
+  border: 1.5px solid rgba(185, 28, 28, 0.07);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03), 0 0 0 1px rgba(185, 28, 28, 0.02);
   transition: border-color 250ms ease, box-shadow 250ms ease, transform 200ms ease;
 }
 

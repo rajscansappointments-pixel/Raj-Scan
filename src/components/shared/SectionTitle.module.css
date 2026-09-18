@@ -12,12 +12,15 @@
 }
 
 .subtitle {
-  color: var(--color-accent-gold-dark);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  background: var(--gradient-gold-shimmer);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .title {

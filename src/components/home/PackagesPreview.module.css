@@ -26,6 +26,7 @@
   padding: 0.3rem 0.9rem;
   border-radius: 9999px;
   border: 1px solid rgba(220, 38, 38, 0.15);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.06);
 }
 
 .eyebrowDot {
@@ -68,12 +69,12 @@
 .card {
   position: relative;
   background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid rgba(185, 28, 28, 0.08);
   border-radius: 20px;
   padding: 1.25rem 1.05rem 1.1rem 1.05rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 6px 28px -4px rgba(11,19,43,0.08), 0 1px 4px rgba(11,19,43,0.04);
+  box-shadow: 0 6px 28px -4px rgba(11,19,43,0.08), 0 1px 4px rgba(11,19,43,0.04), 0 0 0 1px rgba(185, 28, 28, 0.02);
   transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 260ms cubic-bezier(0.16, 1, 0.3, 1);

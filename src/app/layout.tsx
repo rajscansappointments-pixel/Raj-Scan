@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, DM_Serif_Display } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import dynamic from 'next/dynamic';
 
@@ -15,7 +15,8 @@ const inter = Inter({
   display: 'swap',
 });
 
-const playfair = Playfair_Display({
+const playfair = DM_Serif_Display({
+  weight: '400',
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
