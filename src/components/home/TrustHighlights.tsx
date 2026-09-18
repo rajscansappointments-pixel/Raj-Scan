@@ -2,13 +2,22 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Award, MapPin, HeartPulse, Activity } from 'lucide-react';
+import { Container } from '@/components/layout/Container';
 import styles from './TrustHighlights.module.css';
 
-const stats = [
-  { icon: Award, target: 25, suffix: '+', label: 'Years of Trusted Healthcare' },
-  { icon: MapPin, target: 3, suffix: '', label: 'Branches (Dindigul, Chennai, Sivagangai)' },
-  { icon: HeartPulse, target: 7, suffix: '', label: 'Diagnostic Services Under One Roof' },
-  { icon: Activity, target: 32, suffix: ' Slice', label: 'CT (Siemens SOMATOM go-Now)' },
+interface StatItem {
+  icon: typeof Award;
+  target: number;
+  suffix: string;
+  label: string;
+  theme: 'red' | 'navy' | 'teal' | 'gold';
+}
+
+const stats: StatItem[] = [
+  { icon: Award, target: 25, suffix: '+', label: 'Years of Trusted Healthcare', theme: 'red' },
+  { icon: MapPin, target: 3, suffix: '', label: 'Branches (Dindigul, Chennai, Sivagangai)', theme: 'navy' },
+  { icon: HeartPulse, target: 7, suffix: '', label: 'Diagnostic Services Under One Roof', theme: 'teal' },
+  { icon: Activity, target: 32, suffix: ' Slice', label: 'CT (Siemens SOMATOM go-Now)', theme: 'gold' },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -24,7 +33,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
         ran.current = true;
         
         let start: number | null = null;
-        const duration = 1000; // Faster duration (1 second)
+        const duration = 1000;
 
         const step = (timestamp: number) => {
           if (!start) start = timestamp;
@@ -40,28 +49,45 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
         };
         requestAnimationFrame(step);
       }
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
     obs.observe(el);
     return () => obs.disconnect();
   }, [target]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  const isTextSuffix = suffix.trim() === 'Slice';
+
+  return (
+    <span ref={ref} className={styles.counterWrap}>
+      <span className={styles.numberDigits}>{count}</span>
+      {suffix && (
+        <span className={isTextSuffix ? styles.suffixText : styles.suffixSymbol}>
+          {suffix}
+        </span>
+      )}
+    </span>
+  );
 }
 
 export function TrustHighlights() {
   return (
-    <div className={styles.strip}>
-      {stats.map((s, i) => (
-        <div key={i} className={styles.item}>
-          <div className={styles.iconWrap}>
-            <s.icon size={24} strokeWidth={1.5} className={styles.icon} />
+    <section className={styles.section} aria-label="Key Healthcare Highlights">
+      <Container>
+        <div className={styles.card}>
+          <div className={styles.grid}>
+            {stats.map((s, i) => (
+              <div key={i} className={styles.item}>
+                <div className={`${styles.iconWrap} ${styles[s.theme]}`}>
+                  <s.icon size={24} strokeWidth={2} className={styles.icon} />
+                </div>
+                <div className={styles.number}>
+                  <Counter target={s.target} suffix={s.suffix} />
+                </div>
+                <div className={styles.label}>{s.label}</div>
+              </div>
+            ))}
           </div>
-          <div className={styles.number}>
-            <Counter target={s.target} suffix={s.suffix} />
-          </div>
-          <div className={styles.label}>{s.label}</div>
         </div>
-      ))}
-    </div>
+      </Container>
+    </section>
   );
 }
