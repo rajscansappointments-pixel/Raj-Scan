@@ -74,7 +74,7 @@
 
 .italic {
   font-style: italic;
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 60%, #B91C1C 100%);
+  background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -112,9 +112,9 @@
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(135deg, #F87171 0%, #DC2626 50%, #991B1B 100%);
+  background: linear-gradient(135deg, #991B1B 0%, #7F1D1D 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px -4px rgba(220, 38, 38, 0.40);
+  box-shadow: 0 8px 20px -4px rgba(185, 28, 28, 0.28);
 }
 
 .btnGhost {

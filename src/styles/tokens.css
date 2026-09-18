@@ -1,7 +1,7 @@
 :root {
   /* === PREMIUM BRAND PALETTE (Raj Scans) === */
-  --color-brand-red: #DC2626;
-  --color-brand-red-dark: #B91C1C;
+  --color-brand-red: #B91C1C;
+  --color-brand-red-dark: #881313;
   --color-brand-red-light: #FEF2F2;
   --color-brand-navy: #0B132B;
   --color-brand-navy-mid: #1C2541;
@@ -13,7 +13,7 @@
   --color-accent-gold-dark: #D97706;
 
   /* Radiant Gradients */
-  --gradient-brand-red: linear-gradient(135deg, #EF4444 0%, #DC2626 60%, #B91C1C 100%);
+  --gradient-brand-red: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
   --gradient-brand-gold: linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%);
   --gradient-brand-navy: linear-gradient(135deg, #070D1E 0%, #0F1D3D 50%, #0B132B 100%);
   --gradient-brand-sapphire: linear-gradient(135deg, #060C1E 0%, #0B132B 40%, #111D3F 100%);
@@ -123,9 +123,9 @@
   --shadow-xl: 0 24px 56px -8px rgba(15,23,42,0.15), 0 8px 20px -4px rgba(15,23,42,0.08);
   /* Colored ambient shadows — float cards off the page */
   --shadow-card: 0 6px 28px -4px rgba(11,19,43,0.08), 0 2px 6px rgba(11,19,43,0.04);
-  --shadow-card-hover: 0 18px 44px -8px rgba(11,19,43,0.12), 0 0 24px -4px rgba(220,38,38,0.09);
-  --shadow-hero-image: 0 28px 70px -12px rgba(11,19,43,0.24), 0 0 40px -8px rgba(220,38,38,0.12);
-  --shadow-glow-red: 0 8px 24px -4px rgba(220,38,38,0.35), 0 3px 10px -2px rgba(220,38,38,0.18);
+  --shadow-card-hover: 0 16px 40px -8px rgba(11,19,43,0.12), 0 2px 8px rgba(11,19,43,0.04);
+  --shadow-hero-image: 0 24px 60px -12px rgba(11,19,43,0.22);
+  --shadow-glow-red: 0 4px 14px -2px rgba(185,28,28,0.22), 0 2px 6px rgba(0,0,0,0.04);
   --shadow-glow-gold: 0 8px 24px -4px rgba(245,158,11,0.35), 0 3px 10px -2px rgba(245,158,11,0.18);
   --shadow-glow-navy: 0 28px 64px -16px rgba(11,19,43,0.40), 0 0 0 1px rgba(255,255,255,0.05) inset;
   --shadow-card-teal: 0 18px 44px -8px rgba(11,19,43,0.11), 0 0 22px -4px rgba(14,165,233,0.07);

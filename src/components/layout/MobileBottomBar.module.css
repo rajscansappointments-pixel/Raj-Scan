@@ -48,7 +48,7 @@
 }
 
 .bookButton:active {
-  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  background: linear-gradient(135deg, #991B1B 0%, #7F1D1D 100%);
 }
 
 /* Hide on desktop */

@@ -169,9 +169,9 @@ select.input {
 }
 
 .submitBtn:hover {
-  background: linear-gradient(135deg, #F87171 0%, #DC2626 50%, #991B1B 100%);
+  background: linear-gradient(135deg, #991B1B 0%, #7F1D1D 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -4px rgba(220, 38, 38, 0.5);
+  box-shadow: 0 8px 20px -4px rgba(185, 28, 28, 0.3);
 }
 
 /* ── Info Card ── */
