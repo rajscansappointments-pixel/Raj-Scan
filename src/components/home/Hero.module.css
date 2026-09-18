@@ -3,7 +3,7 @@
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 55%, #EEF2F8 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 45%, #F3F6FA 100%);
   position: relative;
   padding: var(--space-80) 0;
   overflow: hidden;
@@ -17,7 +17,7 @@
   width: 750px;
   height: 750px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, rgba(245, 158, 11, 0.03) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.09) 0%, rgba(245, 158, 11, 0.06) 40%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -30,7 +30,7 @@
   width: 650px;
   height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.045) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(16, 185, 129, 0.04) 40%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
@@ -100,7 +100,7 @@
 
 .italic {
   font-style: italic;
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  background: linear-gradient(135deg, #F87171 0%, #DC2626 50%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -139,8 +139,8 @@
 
 .btnPrimary:hover {
   background: linear-gradient(135deg, #F87171 0%, #DC2626 50%, #991B1B 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px -4px rgba(220, 38, 38, 0.5);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 40px -4px rgba(220, 38, 38, 0.55);
 }
 
 .btnGhost {
@@ -205,11 +205,11 @@
   border-radius: 28px;
   overflow: hidden;
   aspect-ratio: 4 / 3;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.95);
   box-shadow:
     0 4px 12px rgba(15, 23, 42, 0.05),
-    0 24px 56px -8px rgba(11, 19, 43, 0.18),
-    0 0 35px -5px rgba(220, 38, 38, 0.1);
+    0 32px 72px -10px rgba(11, 19, 43, 0.24),
+    0 0 50px -8px rgba(220, 38, 38, 0.18);
 }
 
 .img {
@@ -227,13 +227,13 @@
   position: absolute;
   bottom: 1.5rem;
   left: 1.5rem;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 1.15rem 1.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12), 0 0 15px rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.16), 0 0 20px rgba(245, 158, 11, 0.18);
   z-index: 2;
 }
 
@@ -282,7 +282,7 @@
 .mobileHeroSection {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%);
+  background: linear-gradient(180deg, var(--color-brand-bg) 0%, var(--color-surface-warm) 100%);
   width: 100%;
   padding: 16px 20px 0; /* 16px top spacing, 20px horiz margin */
 }
@@ -393,7 +393,8 @@
   gap: var(--space-8);
   padding: var(--space-8) var(--space-16);
   background-color: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-left: 3px solid rgba(220, 38, 38, 0.4);
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -401,7 +402,7 @@
   white-space: nowrap;
   scroll-snap-align: start;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07), 0 0 12px rgba(220, 38, 38, 0.04);
 }
 
 .mobileSub {

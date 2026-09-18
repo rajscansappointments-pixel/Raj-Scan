@@ -53,8 +53,8 @@
 
 .primary:hover {
   background: linear-gradient(135deg, #1C2541 0%, #0B132B 100%);
-  box-shadow: 0 6px 18px rgba(11, 19, 43, 0.28);
-  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(11, 19, 43, 0.34);
+  transform: translateY(-2px);
 }
 
 .secondary {
@@ -68,7 +68,8 @@
 .secondary:hover {
   background-color: var(--color-neutral-50);
   border-color: var(--color-brand-navy);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(11, 19, 43, 0.12);
+  transform: translateY(-2px);
 }
 
 .accent {
@@ -82,9 +83,9 @@
 }
 
 .accent:hover {
-  background: linear-gradient(135deg, #E0B840 0%, #CD9C2B 50%, #A8771A 100%);
-  box-shadow: 0 6px 20px rgba(205, 156, 43, 0.4);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #F0C84A 0%, #D4A832 50%, #B8851A 100%);
+  box-shadow: 0 10px 28px rgba(205, 156, 43, 0.50);
+  transform: translateY(-2px);
   color: #ffffff;
 }
 

@@ -25,12 +25,13 @@
   padding: var(--space-16);
   border-radius: var(--radius-md);
   border: var(--border-width) solid var(--color-neutral-200);
+  box-shadow: 0 2px 12px -2px rgba(11, 19, 43, 0.06);
   transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 }
 
 .equipmentItem:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 16px 40px -8px rgba(11,19,43,0.12), 0 0 18px -4px rgba(220,38,38,0.08);
   border-color: var(--color-brand-red);
 }
 
@@ -56,7 +57,7 @@
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hero-image);
 }
 
 .image {
